@@ -5,7 +5,7 @@ export const mainNavigation = [
   },
   {
     label: "UI",
-    href: "/ui",
+    href: "/dev",
   },
   {
     label: "Home",
@@ -13,7 +13,7 @@ export const mainNavigation = [
   },
   {
     label: "UX",
-    href: "/ux",
+    href: "/design",
   },
   {
     label: "Contact",
