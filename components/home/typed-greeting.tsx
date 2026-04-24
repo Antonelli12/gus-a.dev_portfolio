@@ -8,10 +8,10 @@ const PREFIX = "I am ";
 const NAME = "Gus";
 
 const PHRASES = [
-  [", a ", ["Front-end", true], " ", ["Engineer", true]],
+  [", a ", ["Frontend", true], " ", ["Developer", true]],
   [", a ", ["Product", true], " ", ["Designer", true]],
-  [", building thoughtful ", ["UI", true], " ", ["interfaces", true]],
-  [", shaping meaningful ", ["UX", true], " experiences"],
+  [", designing thoughtful ", ["digital", true], " ", ["experiences", true]],
+  [", building ", ["user", true], " ", ["centric", true], " ", "interfaces"]
 ] as const;
 
 const SPEED = {
