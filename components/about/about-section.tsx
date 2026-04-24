@@ -83,7 +83,13 @@ function BackgroundBlock() {
         </div>
 
         {!isExpanded && (
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0D0C10]/95 via-[#0D0C10]/55 to-transparent" />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
+            style={{
+              background:
+  "linear-gradient(to top, rgba(114, 156, 174, 0.14), rgba(114, 156, 174, 0.06), transparent)",
+            }}
+          />
         )}
       </div>
 
@@ -102,7 +108,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen px-6 py-28 text-white sm:px-10 lg:px-16"
+      className="scroll-mt-16 min-h-screen px-6 py-28 text-white sm:px-10 lg:px-16"
     >
       <div className="mx-auto max-w-6xl">
         <header className="max-w-4xl">

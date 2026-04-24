@@ -2,7 +2,9 @@ import { TypedGreeting } from "@/components/home/typed-greeting";
 
 export function HeroSection() {
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
+    <section 
+    id="home"
+    className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
       <TypedGreeting />
 
       <a
