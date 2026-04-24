@@ -1,22 +1,22 @@
 export const mainNavigation = [
   {
     label: "About",
-    href: "#about",
+    href: "/#about",
   },
   {
     label: "UI",
-    href: "#ui",
+    href: "/ui",
   },
   {
     label: "Home",
-    href: "#home",
+    href: "/#home",
   },
   {
     label: "UX",
-    href: "#ux",
+    href: "/ux",
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "/contact",
   },
 ] as const;
