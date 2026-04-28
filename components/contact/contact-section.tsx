@@ -13,10 +13,10 @@ import {
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
 const fieldClassName =
-  "rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-white outline-none transition placeholder:text-white/30 focus:border-[#729CAE]/70 focus:bg-black/35";
+  "ui-field rounded-xl px-4 py-3 outline-none transition";
 
 const linkButtonClassName =
-  "rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/70 transition hover:border-[#729CAE]/50 hover:bg-[#729CAE]/10 hover:text-white";
+  "ui-button rounded-full px-5 py-2 text-sm transition";
 
 function ContactLinkButton({
   href,
@@ -55,10 +55,7 @@ function SubmissionMessage({
       ? "Message sent! I will be in touch soon."
       : "Something went wrong while sending your message. Please try again or contact me through LinkedIn.";
 
-  const style =
-    state === "success"
-      ? "border-[#729CAE]/50 bg-[#729CAE]/10 text-white shadow-[0_0_24px_rgba(114,156,174,0.16)]"
-      : "border-red-400/40 bg-red-500/10 text-red-100";
+  const style = state === "success" ? "ui-status-success" : "ui-status-error";
 
   return (
     <div
@@ -97,16 +94,7 @@ export function ContactSection() {
     };
   }, [submissionState]);
 
-  async function handleSubmit(event: SubmitEvent) {
-    event.preventDefault();
-
-    const form = event.target;
-
-    if (!(form instanceof HTMLFormElement)) {
-      setSubmissionState("error");
-      return;
-    }
-
+  async function handleSubmit(form: HTMLFormElement) {
     const formData = new FormData(form);
 
     setSubmissionState("submitting");
@@ -132,10 +120,11 @@ export function ContactSection() {
       setSubmissionState("error");
     }
   }
+
   return (
     <section
       id="contact"
-      className="scroll-mt-16 min-h-screen px-6 py-28 text-white sm:px-10 lg:px-16"
+      className="scroll-mt-16 min-h-screen px-6 py-28 text-theme sm:px-10 lg:px-16"
     >
       <div className="mx-auto flex max-w-3xl flex-col gap-14">
         <header className="max-w-3xl">
@@ -168,8 +157,11 @@ export function ContactSection() {
         </header>
 
         <form
-          onSubmit={(event) => void handleSubmit(event.nativeEvent as SubmitEvent)}
-          className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 backdrop-blur-sm sm:p-8"
+          onSubmit={(event) => {
+            event.preventDefault();
+            void handleSubmit(event.currentTarget);
+          }}
+          className="ui-card rounded-2xl p-6 sm:p-8"
         >
           <div className="grid gap-5">
             <SubmissionMessage
@@ -179,7 +171,7 @@ export function ContactSection() {
 
             <label className="grid gap-2">
               <span
-                className={`${headingFont.className} text-lg text-white sm:text-xl`}
+                className={`${headingFont.className} text-lg text-theme sm:text-xl`}
               >
                 Name
               </span>
@@ -195,7 +187,7 @@ export function ContactSection() {
 
             <label className="grid gap-2">
               <span
-                className={`${headingFont.className} text-lg text-white sm:text-xl`}
+                className={`${headingFont.className} text-lg text-theme sm:text-xl`}
               >
                 Email
               </span>
@@ -211,7 +203,7 @@ export function ContactSection() {
 
             <label className="grid gap-2">
               <span
-                className={`${headingFont.className} text-lg text-white sm:text-xl`}
+                className={`${headingFont.className} text-lg text-theme sm:text-xl`}
               >
                 Message
               </span>
@@ -233,7 +225,7 @@ export function ContactSection() {
             <button
               type="submit"
               disabled={submissionState === "submitting"}
-              className={`${headingFont.className} mt-2 w-fit rounded-full border border-[#729CAE]/60 bg-[#729CAE]/10 px-6 py-3 text-lg text-white transition hover:bg-[#729CAE]/20 hover:shadow-[0_0_24px_rgba(114,156,174,0.25)] disabled:cursor-not-allowed disabled:opacity-50`}
+              className={`${headingFont.className} ui-button mt-2 w-fit rounded-full px-6 py-3 text-lg transition hover:shadow-[0_0_24px_rgba(114,156,174,0.25)] disabled:cursor-not-allowed disabled:opacity-50`}
             >
               {submissionState === "submitting" ? "Sending..." : "Submit"}
             </button>

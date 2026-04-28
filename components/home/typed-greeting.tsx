@@ -80,7 +80,7 @@ function renderParts(parts: readonly Part[]) {
       <span
         key={i}
         className={highlightFont.className}
-        style={{ color: "#729CAE", fontSize: "0.74em", lineHeight: 1 }}
+        style={{ color: "var(--accent)", fontSize: "0.74em", lineHeight: 1 }}
       >
         {part[0]}
       </span>
@@ -192,12 +192,12 @@ export function TypedGreeting() {
     phase === "typingPhrase");
 
   return (
-    <div className="flex flex-col items-center text-center text-white">
+    <div className="flex flex-col items-center text-center text-theme">
       <div className="w-[min(88vw,980px)] min-h-[1.3em]">
         <p className={headingFont.className} style={textStyle}>
           {greeting}
           {showCaret && phase === "typingGreeting" && (
-            <span className="ml-1 inline-block animate-pulse text-white/80">|</span>
+            <span className="ml-1 inline-block animate-pulse text-theme-muted">|</span>
           )}
         </p>
       </div>
@@ -210,13 +210,13 @@ export function TypedGreeting() {
           <span>{prefix}</span>
           <span
             className={highlightFont.className}
-            style={{ color: "#729CAE", fontSize: "0.74em", lineHeight: 1 }}
+            style={{ color: "var(--accent)", fontSize: "0.74em", lineHeight: 1 }}
           >
             {name}
           </span>
           <span>{renderParts(visiblePhrase)}</span>
           {showCaret && phase !== "typingGreeting" && (
-            <span className="ml-1 inline-block animate-pulse text-white/80">|</span>
+            <span className="ml-1 inline-block animate-pulse text-theme-muted">|</span>
           )}
         </h1>
       </div>

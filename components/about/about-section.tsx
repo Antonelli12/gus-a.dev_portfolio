@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type CSSProperties, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import {
   aboutSection,
@@ -14,13 +14,8 @@ import {
   sectionEyebrowClassName,
   sectionSummaryClassName,
   sectionTitleClassName,
+  sectionTitleHighlightStyle,
 } from "@/lib/typography";
-
-const aboutTitleHighlightStyle = {
-  color: "#729CAE",
-  fontSize: "0.74em",
-  lineHeight: 1,
-} satisfies CSSProperties;
 
 function AboutBlock({
   id,
@@ -36,13 +31,13 @@ function AboutBlock({
   return (
     <section
       id={id}
-      className={`scroll-mt-28 rounded-2xl border border-white/10 bg-white/[0.035] p-6 backdrop-blur-sm sm:p-8 ${className}`}
+      className={`ui-card scroll-mt-28 rounded-2xl p-6 sm:p-8 ${className}`}
     >
-      <h3 className={`${headingFont.className} text-2xl text-white sm:text-3xl`}>
+      <h3 className={`${headingFont.className} text-2xl text-theme sm:text-3xl`}>
         {title}
       </h3>
 
-      <div className="mt-5 text-base leading-8 text-white/65">{children}</div>
+      <div className="mt-5 text-base leading-8 text-theme-muted">{children}</div>
     </section>
   );
 }
@@ -53,7 +48,7 @@ function ListBlock({ items }: { items: readonly string[] }) {
       {items.map((item, index) => (
         <li
           key={`${item}-${index}`}
-          className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70"
+          className="ui-pill rounded-xl px-4 py-3 text-sm"
         >
           {item}
         </li>
@@ -96,7 +91,7 @@ function BackgroundBlock() {
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
-        className="mt-5 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/70 transition hover:border-[#729CAE]/50 hover:bg-[#729CAE]/10 hover:text-white"
+        className="ui-button mt-5 rounded-full px-5 py-2 text-sm transition"
       >
         {isExpanded ? "Show less" : "Read more"}
       </button>
@@ -108,7 +103,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-16 min-h-screen px-6 py-28 text-white sm:px-10 lg:px-16"
+      className="scroll-mt-16 min-h-screen px-6 py-28 text-theme sm:px-10 lg:px-16"
     >
       <div className="mx-auto max-w-6xl">
         <header className="max-w-4xl">
@@ -117,7 +112,7 @@ export function AboutSection() {
           <h2 className={`${headingFont.className} ${sectionTitleClassName}`}>
             <span
               className={highlightFont.className}
-              style={aboutTitleHighlightStyle}
+              style={sectionTitleHighlightStyle}
             >
               Developer
             </span>
@@ -126,7 +121,7 @@ export function AboutSection() {
             <br />
             <span
               className={highlightFont.className}
-              style={aboutTitleHighlightStyle}
+              style={sectionTitleHighlightStyle}
             >
               Designer.
             </span>

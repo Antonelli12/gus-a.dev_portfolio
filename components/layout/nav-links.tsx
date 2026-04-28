@@ -69,8 +69,8 @@ export function NavLinks() {
                 aria-current={isActive ? "page" : undefined}
                 className={`${headingFont.className} inline-block text-lg transition duration-200 sm:text-xl ${
                   isActive
-                    ? "scale-110 text-[#729CAE] drop-shadow-[0_0_10px_rgba(114,156,174,0.45)]"
-                    : "text-white/85 hover:scale-105 hover:text-[#729CAE]"
+                    ? "scale-110 text-theme-accent drop-shadow-[0_0_10px_rgba(114,156,174,0.45)]"
+                    : "text-theme-muted hover:scale-105 hover:text-theme-accent"  
                 }`}
               >
                 {item.label}

@@ -3,14 +3,166 @@
 :root {
   --background: #0d0c10;
   --foreground: #f5f7fa;
+  --foreground-muted: rgba(245, 247, 250, 0.68);
+  --foreground-faint: rgba(245, 247, 250, 0.35);
+
   --accent: #729cae;
   --accent-soft: rgba(114, 156, 174, 0.16);
   --accent-faint: rgba(114, 156, 174, 0.08);
+
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  --surface-card: rgba(255, 255, 255, 0.035);
+  --surface-card-strong: rgba(255, 255, 255, 0.06);
+  --surface-pill: rgba(0, 0, 0, 0.2);
+
+  --header-bg: rgba(13, 12, 16, 0.82);
+  --header-shadow: 0 10px 32px rgba(114, 156, 174, 0.16);
+
+  --toggle-bg: rgba(114, 156, 174, 0.35);
+  --toggle-bg-hover: rgba(114, 156, 174, 0.5);
+  --toggle-knob: #ffffff;
+  --toggle-knob-shadow: 0 0 10px rgba(255, 255, 255, 0.45);
+  --toggle-shadow: 0 0 14px rgba(114, 156, 174, 0.25);
+
+  --button-bg: rgba(255, 255, 255, 0.05);
+  --button-bg-hover: rgba(114, 156, 174, 0.12);
+  --button-border: rgba(255, 255, 255, 0.1);
+  --button-border-hover: rgba(114, 156, 174, 0.5);
+  --button-text: rgba(245, 247, 250, 0.72);
+  --button-text-hover: #ffffff;
+
+  --field-bg: rgba(0, 0, 0, 0.25);
+  --field-bg-focus: rgba(0, 0, 0, 0.35);
+  --field-border: rgba(255, 255, 255, 0.1);
+  --field-border-focus: rgba(114, 156, 174, 0.7);
+  --field-placeholder: rgba(245, 247, 250, 0.3);
+
+  --status-success-border: rgba(114, 156, 174, 0.5);
+  --status-success-bg: rgba(114, 156, 174, 0.1);
+  --status-success-text: #ffffff;
+  --status-success-shadow: 0 0 24px rgba(114, 156, 174, 0.16);
+
+  --status-error-border: rgba(248, 113, 113, 0.4);
+  --status-error-bg: rgba(239, 68, 68, 0.1);
+  --status-error-text: #fee2e2;
+
+  --site-vignette: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.18) 58%,
+    rgba(0, 0, 0, 0.52) 100%
+  );
+
+  --site-grid-primary: rgba(114, 156, 174, 0.22);
+  --site-grid-secondary: rgba(114, 156, 174, 0.1);
+
+  --site-noise: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.018),
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.012) 40%,
+    rgba(255, 255, 255, 0) 60%,
+    rgba(255, 255, 255, 0.018) 100%
+  );
+
+  --site-glow: radial-gradient(
+      circle at 50% 45%,
+      rgba(114, 156, 174, 0.14),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(114, 156, 174, 0.08),
+      transparent 48%
+    );
+}
+
+html[data-theme="light"] {
+  --background: #eef4f7;
+  --foreground: #0d0c10;
+  --foreground-muted: rgba(13, 12, 16, 0.72);
+  --foreground-faint: rgba(13, 12, 16, 0.42);
+
+  --accent: #4f8297;
+  --accent-soft: rgba(79, 130, 151, 0.18);
+  --accent-faint: rgba(79, 130, 151, 0.1);
+
+  --border-subtle: rgba(13, 12, 16, 0.14);
+
+  --surface-card: rgba(13, 12, 16, 0.09);
+  --surface-card-strong: rgba(13, 12, 16, 0.13);
+  --surface-pill: rgba(13, 12, 16, 0.12);
+
+  --header-bg: rgba(238, 244, 247, 0.88);
+  --header-shadow: 0 10px 32px rgba(79, 130, 151, 0.2);
+
+  --toggle-bg: rgba(79, 130, 151, 0.25);
+  --toggle-bg-hover: rgba(79, 130, 151, 0.38);
+  --toggle-knob: #ffffff;
+  --toggle-knob-shadow: 0 0 10px rgba(79, 130, 151, 0.4);
+  --toggle-shadow: 0 0 14px rgba(79, 130, 151, 0.22);
+
+  --button-bg: rgba(13, 12, 16, 0.05);
+  --button-bg-hover: rgba(79, 130, 151, 0.16);
+  --button-border: rgba(13, 12, 16, 0.16);
+  --button-border-hover: rgba(79, 130, 151, 0.65);
+  --button-text: rgba(13, 12, 16, 0.78);
+  --button-text-hover: #0d0c10;
+
+  --field-bg: rgba(13, 12, 16, 0.06);
+  --field-bg-focus: rgba(13, 12, 16, 0.09);
+  --field-border: rgba(13, 12, 16, 0.16);
+  --field-border-focus: rgba(79, 130, 151, 0.7);
+  --field-placeholder: rgba(13, 12, 16, 0.38);
+
+  --status-success-border: rgba(79, 130, 151, 0.55);
+  --status-success-bg: rgba(79, 130, 151, 0.14);
+  --status-success-text: #0d0c10;
+  --status-success-shadow: 0 0 24px rgba(79, 130, 151, 0.16);
+
+  --status-error-border: rgba(185, 28, 28, 0.35);
+  --status-error-bg: rgba(248, 113, 113, 0.15);
+  --status-error-text: #7f1d1d;
+
+  --site-vignette: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(79, 130, 151, 0.08) 58%,
+    rgba(13, 12, 16, 0.08) 100%
+  );
+
+  --site-grid-primary: rgba(79, 130, 151, 0.3);
+  --site-grid-secondary: rgba(79, 130, 151, 0.15);
+
+  --site-noise: linear-gradient(
+    to bottom,
+    rgba(13, 12, 16, 0.012),
+    rgba(13, 12, 16, 0) 20%,
+    rgba(13, 12, 16, 0.008) 40%,
+    rgba(13, 12, 16, 0) 60%,
+    rgba(13, 12, 16, 0.012) 100%
+  );
+
+  --site-glow: radial-gradient(
+      circle at 50% 45%,
+      rgba(79, 130, 151, 0.12),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(79, 130, 151, 0.08),
+      transparent 48%
+    );
 }
 
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
 }
 
 body {
@@ -19,45 +171,104 @@ body {
 }
 
 .bg-site-base {
-  background-color: #0d0c10;
+  background-color: var(--background);
 }
 
 .bg-site-vignette {
-  background:
-    radial-gradient(
-      circle at center,
-      transparent 0%,
-      rgba(0, 0, 0, 0.18) 58%,
-      rgba(0, 0, 0, 0.52) 100%
-    );
+  background: var(--site-vignette);
 }
 
 .bg-site-pixel-grid {
   background-image:
-    radial-gradient(circle, rgba(114, 156, 174, 0.22) 0.7px, transparent 0.8px),
-    radial-gradient(circle, rgba(114, 156, 174, 0.1) 0.5px, transparent 0.7px);
+    radial-gradient(circle, var(--site-grid-primary) 0.7px, transparent 0.8px),
+    radial-gradient(circle, var(--site-grid-secondary) 0.5px, transparent 0.7px);
   background-size: 18px 18px, 32px 32px;
   background-position: 0 0, 9px 9px;
   filter: blur(0.15px);
 }
 
 .bg-site-noise {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0.018),
-    rgba(255, 255, 255, 0) 20%,
-    rgba(255, 255, 255, 0.012) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.018) 100%
-  );
+  background-image: var(--site-noise);
   background-size: 100% 240px;
+  mix-blend-mode: multiply;
+}
+
+html[data-theme="dark"] .bg-site-noise {
   mix-blend-mode: screen;
 }
 
 .bg-site-glow {
-  background:
-    radial-gradient(circle at 50% 45%, rgba(114, 156, 174, 0.14), transparent 32%),
-    radial-gradient(circle at 50% 55%, rgba(114, 156, 174, 0.08), transparent 48%);
+  background: var(--site-glow);
+}
+
+/* Reusable theme-aware utilities */
+.ui-card {
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-card);
+  color: var(--foreground);
+  backdrop-filter: blur(8px);
+}
+
+.ui-pill {
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-pill);
+  color: var(--foreground-muted);
+}
+
+.ui-button {
+  border: 1px solid var(--button-border);
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+.ui-button:hover {
+  border-color: var(--button-border-hover);
+  background: var(--button-bg-hover);
+  color: var(--button-text-hover);
+}
+
+.ui-field {
+  border: 1px solid var(--field-border);
+  background: var(--field-bg);
+  color: var(--foreground);
+}
+
+.ui-field::placeholder {
+  color: var(--field-placeholder);
+}
+
+.ui-field:focus {
+  border-color: var(--field-border-focus);
+  background: var(--field-bg-focus);
+}
+
+.ui-status-success {
+  border-color: var(--status-success-border);
+  background: var(--status-success-bg);
+  color: var(--status-success-text);
+  box-shadow: var(--status-success-shadow);
+}
+
+.ui-status-error {
+  border-color: var(--status-error-border);
+  background: var(--status-error-bg);
+  color: var(--status-error-text);
+}
+
+.text-theme {
+  color: var(--foreground);
+}
+
+.text-theme-muted {
+  color: var(--foreground-muted);
+}
+
+.text-theme-faint {
+  color: var(--foreground-faint);
+}
+
+.text-theme-accent {
+  color: var(--accent);
 }
 
 @keyframes site-breathe {

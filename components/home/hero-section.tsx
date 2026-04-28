@@ -8,7 +8,7 @@ export function HeroSection() {
       <TypedGreeting />
 
       <a
-        className="mt-10 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm text-white/70 backdrop-blur-sm transition hover:bg-white/10 hover:text-white"
+        className="ui-button mt-10 rounded-full px-6 py-3 text-sm backdrop-blur-sm transition"
         href="#about"
       >
         View my work ↓

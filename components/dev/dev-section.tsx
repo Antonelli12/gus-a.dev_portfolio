@@ -24,15 +24,14 @@ function DevBlock({
   children: React.ReactNode;
 }) {
   return (
-    <section
-      id={id}
-      className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 text-white backdrop-blur-sm sm:p-8"
-    >
-      <h3 className={`${headingFont.className} text-2xl text-white sm:text-3xl`}>
+    <section id={id} className="ui-card rounded-2xl p-6 sm:p-8">
+      <h3 className={`${headingFont.className} text-2xl text-theme sm:text-3xl`}>
         {title}
       </h3>
 
-      <div className="mt-5 text-base leading-8 text-white/65">{children}</div>
+      <div className="mt-5 text-base leading-8 text-theme-muted">
+        {children}
+      </div>
     </section>
   );
 }
@@ -41,10 +40,7 @@ function ItemList({ items }: { items: readonly string[] }) {
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
       {items.map((item, index) => (
-        <li
-          key={`${item}-${index}`}
-          className="rounded-xl border border-white/10 bg-black/20 px-4 py-3 text-sm text-white/70"
-        >
+        <li key={`${item}-${index}`} className="ui-pill rounded-xl px-4 py-3 text-sm">
           {item}
         </li>
       ))}
@@ -54,7 +50,7 @@ function ItemList({ items }: { items: readonly string[] }) {
 
 export function DevSection() {
   return (
-    <main className="min-h-screen px-6 py-28 text-white sm:px-10 lg:px-16">
+    <main className="min-h-screen px-6 py-28 text-theme sm:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <header className="max-w-4xl">
           <p className={sectionEyebrowClassName}>{devSection.eyebrow}</p>
@@ -100,7 +96,7 @@ export function DevSection() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/70 transition hover:border-[#729CAE]/50 hover:bg-[#729CAE]/10 hover:text-white"
+                  className="ui-button rounded-full px-5 py-2 text-sm transition"
                 >
                   {link.label}
                 </a>

@@ -8,15 +8,35 @@ export const metadata: Metadata = {
   description: "Portfolio of Gustavo Antonelli",
 };
 
+const themeScript = `
+  try {
+    const savedTheme = window.localStorage.getItem("theme");
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const theme = savedTheme === "light" || savedTheme === "dark"
+      ? savedTheme
+      : prefersLight
+        ? "light"
+        : "dark";
+
+    document.documentElement.dataset.theme = theme;
+  } catch {
+    document.documentElement.dataset.theme = "dark";
+  }
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+
       <body
-        className={`${bodyFont.className} relative min-h-screen overflow-x-hidden bg-[#0D0C10] text-white`}
+        className={`${bodyFont.className} relative min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]`}
       >
         <SiteBackground />
         <div className="relative z-10">{children}</div>
