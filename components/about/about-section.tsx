@@ -66,10 +66,10 @@ function BackgroundBlock() {
       title={background.title}
       className="lg:col-span-2"
     >
-      <div className="relative">
+      <div className="relative overflow-hidden rounded-b-[1.1rem]">
         <div
-          className={`space-y-5 transition-all duration-300 ${
-            isExpanded ? "max-h-[900px]" : "max-h-40 overflow-hidden"
+          className={`space-y-5 overflow-hidden transition-[max-height] duration-300 ease-out ${
+            isExpanded ? "max-h-[900px]" : "max-h-40"
           }`}
         >
           {background.body.map((paragraph, index) => (
@@ -77,15 +77,11 @@ function BackgroundBlock() {
           ))}
         </div>
 
-        {!isExpanded && (
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-16"
-            style={{
-              background:
-  "linear-gradient(to top, rgba(114, 156, 174, 0.14), rgba(114, 156, 174, 0.06), transparent)",
-            }}
-          />
-        )}
+        <div
+          className={`ui-content-fade pointer-events-none absolute inset-x-0 bottom-0 h-14 transition-opacity duration-300 ease-out ${
+            isExpanded ? "opacity-0" : "opacity-100"
+          }`}
+        />
       </div>
 
       <button
