@@ -30,7 +30,7 @@ function DesignBlock({
       id={id}
       className={`ui-card rounded-2xl p-6 sm:p-8 ${className}`}
     >
-      <h3 className={`${headingFont.className} text-2xl text-theme sm:text-3xl`}>
+      <h3 className={`${headingFont.className} ui-block-title text-2xl sm:text-3xl`}>
         {title}
       </h3>
 

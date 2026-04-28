@@ -25,7 +25,7 @@ function DevBlock({
 }) {
   return (
     <section id={id} className="ui-card rounded-2xl p-6 sm:p-8">
-      <h3 className={`${headingFont.className} text-2xl text-theme sm:text-3xl`}>
+      <h3 className={`${headingFont.className} ui-block-title text-2xl sm:text-3xl`}>
         {title}
       </h3>
 
@@ -90,17 +90,17 @@ export function DevSection() {
 
           <DevBlock id="links" title={devLinks.title}>
             <div className="flex flex-wrap gap-3">
-              {devLinks.items.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ui-button rounded-full px-5 py-2 text-sm transition"
-                >
-                  {link.label}
-                </a>
-              ))}
+              {devLinks.items.map((link, index) => (
+              <a
+                key={`${link.label}-${link.href}-${index}`}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="ui-button rounded-full px-5 py-2 text-sm transition"
+              >
+                {link.label}
+              </a>
+            ))}
             </div>
           </DevBlock>
         </div>

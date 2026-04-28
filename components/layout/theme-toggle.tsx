@@ -4,34 +4,34 @@ import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
-function getInitialTheme(): Theme {
-  if (typeof document === "undefined") {
-    return "dark";
-  }
-
-  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
-}
-
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = useState<Theme>("dark");
+  const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
+    const currentTheme =
+      document.documentElement.dataset.theme === "light" ? "light" : "dark";
 
-  const isLight = theme === "light";
+    setTheme(currentTheme);
+    setHasMounted(true);
+  }, []);
+
+  function toggleTheme() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+
+    setTheme(nextTheme);
+    document.documentElement.dataset.theme = nextTheme;
+    window.localStorage.setItem("theme", nextTheme);
+  }
+
+  const isLight = hasMounted && theme === "light";
 
   return (
     <button
       type="button"
       aria-label="Toggle theme"
       aria-pressed={isLight}
-      onClick={() =>
-        setTheme((currentTheme) =>
-          currentTheme === "dark" ? "light" : "dark",
-        )
-      }
+      onClick={toggleTheme}
       className="group relative h-5 w-9 rounded-full border border-[var(--border-subtle)] bg-[var(--toggle-bg)] shadow-[var(--toggle-shadow)] transition hover:bg-[var(--toggle-bg-hover)]"
     >
       <span
