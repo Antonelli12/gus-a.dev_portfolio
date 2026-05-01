@@ -1,4 +1,4 @@
-import { DevSection } from "@/components/dev/dev-section";
+import { DevSection } from "@/components/development/dev-section";
 import { SiteHeader } from "@/components/layout/site-header";
 
 export default function DevelopmentPage() {
