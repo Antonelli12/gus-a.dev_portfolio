@@ -1,11 +1,13 @@
+import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import {
-  devCertifications,
-  devExperience,
-  devLinks,
-  devProjects,
+  apiIntegration,
+  designSystemsComponents,
+  developmentIntro,
   devSection,
-  devSkills,
+  frontendImplementation,
+  technicalProjects,
+  toolsStack,
 } from "@/data/development";
 import {
   sectionEyebrowClassName,
@@ -18,16 +20,23 @@ function DevBlock({
   id,
   title,
   children,
+  className = "",
 }: {
   id: string;
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
+  className?: string;
 }) {
   return (
-    <section id={id} className="ui-card rounded-2xl p-6 sm:p-8">
-      <h3 className={`${headingFont.className} ui-block-title text-2xl sm:text-3xl`}>
+    <section
+      id={id}
+      className={`ui-card scroll-mt-28 rounded-2xl p-6 sm:p-8 ${className}`}
+    >
+      <h2
+        className={`${headingFont.className} ui-block-title text-2xl sm:text-3xl`}
+      >
         {title}
-      </h3>
+      </h2>
 
       <div className="mt-5 text-base leading-8 text-theme-muted">
         {children}
@@ -36,15 +45,109 @@ function DevBlock({
   );
 }
 
-function ItemList({ items }: { items: readonly string[] }) {
+function ParagraphBlock({ body }: { body: readonly string[] }) {
   return (
-    <ul className="grid gap-3 sm:grid-cols-2">
+    <div className="space-y-5">
+      {body.map((paragraph, index) => (
+        <p key={`${paragraph}-${index}`}>{paragraph}</p>
+      ))}
+    </div>
+  );
+}
+
+function PillList({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="flex flex-wrap gap-2">
       {items.map((item, index) => (
-        <li key={`${item}-${index}`} className="ui-pill rounded-xl px-4 py-3 text-sm">
+        <li
+          key={`${item}-${index}`}
+          className="ui-pill rounded-full px-4 py-2 text-xs"
+        >
           {item}
         </li>
       ))}
     </ul>
+  );
+}
+
+function ImplementationGrid() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      {frontendImplementation.items.map((item) => (
+        <article key={item.title} className="ui-pill rounded-2xl p-5">
+          <h3 className={`${headingFont.className} text-xl text-theme`}>
+            {item.title}
+          </h3>
+
+          <p className="mt-3 text-sm leading-7 text-theme-muted">
+            {item.description}
+          </p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ApiIntegrationContent() {
+  return (
+    <div className="space-y-6">
+      <ParagraphBlock body={apiIntegration.body} />
+      <PillList items={apiIntegration.items} />
+    </div>
+  );
+}
+
+function ProjectGrid() {
+  return (
+    <div className="grid gap-4 lg:grid-cols-3">
+      {technicalProjects.items.map((project) => (
+        <article
+          key={project.title}
+          className="ui-pill flex h-full flex-col rounded-2xl p-5"
+        >
+          <div className="flex flex-wrap gap-2">
+            <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-theme-faint">
+              {project.type}
+            </span>
+            <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-theme-faint">
+              {project.status}
+            </span>
+          </div>
+
+          <h3
+            className={`${headingFont.className} mt-5 text-2xl text-theme-accent`}
+          >
+            {project.title}
+          </h3>
+
+          <p className="mt-4 flex-1 text-sm leading-7 text-theme-muted">
+            {project.description}
+          </p>
+
+          <div className="mt-6">
+            <PillList items={project.focus} />
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ToolsGrid() {
+  return (
+    <div className="grid gap-4 sm:grid-cols-2">
+      {toolsStack.groups.map((group) => (
+        <article key={group.title} className="ui-pill rounded-2xl p-5">
+          <h3
+            className={`${headingFont.className} mb-4 text-xl text-theme-accent`}
+          >
+            {group.title}
+          </h3>
+
+          <PillList items={group.items} />
+        </article>
+      ))}
+    </div>
   );
 }
 
@@ -72,36 +175,47 @@ export function DevSection() {
         </header>
 
         <div className="mt-20 grid gap-6 lg:grid-cols-2">
-          <DevBlock id="skills" title={devSkills.title}>
-            <ItemList items={devSkills.items} />
+          <DevBlock
+            id="development-direction"
+            title={developmentIntro.title}
+            className="lg:col-span-2"
+          >
+            <ParagraphBlock body={developmentIntro.body} />
           </DevBlock>
 
-          <DevBlock id="experience" title={devExperience.title}>
-            <ItemList items={devExperience.items} />
+          <DevBlock
+            id="frontend-implementation"
+            title={frontendImplementation.title}
+            className="lg:col-span-2"
+          >
+            <ImplementationGrid />
           </DevBlock>
 
-          <DevBlock id="projects" title={devProjects.title}>
-            <ItemList items={devProjects.items} />
+          <DevBlock id="api-integration" title={apiIntegration.title}>
+            <ApiIntegrationContent />
           </DevBlock>
 
-          <DevBlock id="certifications" title={devCertifications.title}>
-            <ItemList items={devCertifications.items} />
+          <DevBlock
+            id="design-systems-components"
+            title={designSystemsComponents.title}
+          >
+            <ParagraphBlock body={designSystemsComponents.body} />
           </DevBlock>
 
-          <DevBlock id="links" title={devLinks.title}>
-            <div className="flex flex-wrap gap-3">
-              {devLinks.items.map((link, index) => (
-              <a
-                key={`${link.label}-${link.href}-${index}`}
-                href={link.href}
-                target="_blank"
-                rel="noreferrer"
-                className="ui-button rounded-full px-5 py-2 text-sm transition"
-              >
-                {link.label}
-              </a>
-            ))}
-            </div>
+          <DevBlock
+            id="technical-projects"
+            title={technicalProjects.title}
+            className="lg:col-span-2"
+          >
+            <ProjectGrid />
+          </DevBlock>
+
+          <DevBlock
+            id="tools-stack"
+            title={toolsStack.title}
+            className="lg:col-span-2"
+          >
+            <ToolsGrid />
           </DevBlock>
         </div>
       </div>
