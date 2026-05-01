@@ -1,14 +1,14 @@
 export const designSection = {
-  eyebrow: "UX",
-  titleStart: "Designing",
-  titleHighlight: "clear",
-  titleEnd: "digital experiences.",
+  eyebrow: "Design",
+  titleStart: "UX / Product",
+  titleHighlight: "design",
+  titleEnd: "for clearer digital experiences.",
   intro:
     "This page collects the UX and product design side of my portfolio: user-centred thinking, interface structure, research, prototypes, and case studies. It represents the direction I am moving towards professionally.",
 };
 
 export const designSkills = {
-  title: "Skills",
+  title: "Tools & Methods",
   items: [
     "UX thinking",
     "Product thinking",
@@ -22,16 +22,16 @@ export const designSkills = {
 };
 
 export const designExperience = {
-  title: "Experience",
+  title: "Design Process",
   items: [
-    "Rebuilding my portfolio around UX and product design",
-    "Translating technical projects into clearer user-facing experiences",
-    "Applying customer-facing experience to product and usability thinking",
+    "Understanding the problem before shaping the interface",
+    "Turning technical features into clearer user-facing workflows",
+    "Using customer-facing experience to think about friction, clarity, and usability",
   ],
 };
 
 export const designCaseStudies = {
-  title: "Prototypes & Case Studies",
+  title: "Featured Case Studies",
   items: [
     "Portfolio rebuild case study",
     "Job application tracker prototype",
@@ -40,9 +40,9 @@ export const designCaseStudies = {
 };
 
 export const designCertifications = {
-  title: "Certifications",
+  title: "Learning & Credentials",
   items: [
-    "UX certification placeholder",
+    "Design certification placeholder",
     "Product design certification placeholder",
     "Accessibility certification placeholder",
   ],

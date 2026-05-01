@@ -1,7 +1,7 @@
 import { DevSection } from "@/components/dev/dev-section";
 import { SiteHeader } from "@/components/layout/site-header";
 
-export default function UiPage() {
+export default function DevelopmentPage() {
   return (
     <>
       <SiteHeader />

@@ -6,7 +6,7 @@ import {
   devProjects,
   devSection,
   devSkills,
-} from "@/data/dev";
+} from "@/data/development";
 import {
   sectionEyebrowClassName,
   sectionSummaryClassName,

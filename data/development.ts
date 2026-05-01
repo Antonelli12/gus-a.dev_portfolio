@@ -1,14 +1,14 @@
 export const devSection = {
-  eyebrow: "UI",
-  titleStart: "Frontend",
-  titleHighlight: "implementation",
-  titleEnd: "with product context.",
+  eyebrow: "Development",
+  titleStart: "Building",
+  titleHighlight: "interfaces",
+  titleEnd: "with design context.",
   intro:
-    "This page collects the development skills I still want to keep close to my UX and product design work: React, interface structure, API integration, and translating ideas into working screens.",
+    "This page collects the development side of my portfolio: frontend implementation, React components, API integration, responsive layouts, and the technical constraints behind usable digital products.",
 };
 
 export const devSkills = {
-  title: "Skills",
+  title: "Frontend Implementation",
   items: [
     "React components",
     "JavaScript / TypeScript",
@@ -20,16 +20,16 @@ export const devSkills = {
 };
 
 export const devExperience = {
-  title: "Experience",
+  title: "Design Intent & Technical Constraints",
   items: [
-    "Built React interfaces during full-stack project work",
-    "Integrated frontend views with REST APIs",
-    "Worked with form handling, validation, and user-facing workflows",
+    "I understand how design decisions translate into working interfaces",
+    "I can work with APIs, forms, validation, and user-facing workflows",
+    "I use technical awareness to make design ideas more realistic and buildable",
   ],
 };
 
 export const devProjects = {
-  title: "Projects",
+  title: "Technical Projects",
   items: [
     "Portfolio rebuild",
     "Customer and account management interface",
@@ -38,7 +38,7 @@ export const devProjects = {
 };
 
 export const devCertifications = {
-  title: "Certifications",
+  title: "Learning & Credentials",
   items: [
     "Frontend certification placeholder",
     "JavaScript certification placeholder",
