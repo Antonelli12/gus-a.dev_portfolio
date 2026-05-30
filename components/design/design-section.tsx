@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import { HeroQuote } from "@/components/shared/hero-quote";
+import { ProjectCardDestination } from "@/components/shared/project-card-destination";
 import { ToolIconList } from "@/components/shared/tool-icon-list";
 import {
   designIntro,
@@ -99,6 +100,10 @@ function CaseStudyGrid() {
 
           <div className="mt-6">
             <PillList items={caseStudy.focus} />
+          </div>
+
+          <div className="mt-5">
+            <ProjectCardDestination destination={caseStudy.destination} />
           </div>
         </article>
       ))}

@@ -5,6 +5,9 @@ export const homeHero = {
   greeting: "Hello There!",
   prefix: "I am ",
   name: "Gus",
+  staticHeading: "Gus, Developer Turned Designer",
+  staticSummary:
+    "UX engineer and technical product designer focused on usable digital products, frontend implementation, and product-minded workflows.",
   callsToAction: [
     {
       label: "View design work",
@@ -18,7 +21,7 @@ export const homeHero = {
 } as const;
 
 export const homeHeroPhrases = [
-  [", ", ["Developer", true], " turned ", ["Designer", true]],
+  [", ", ["Developer", true], " Turned ", ["Designer", true]],
   [", a ", ["UX", true], " ", ["Engineer", true]],
   [
     ", a ",
@@ -28,6 +31,6 @@ export const homeHeroPhrases = [
     " ",
     ["Designer", true],
   ],
-  [", a ", ["Product-first", true], " ", ["Engineer", true]],
-  [", a ", ["Designer", true], " with ", ["technical", true], " depth"],
+  [", a ", ["Product-First", true], " ", ["Engineer", true]],
+  [", a ", ["Designer", true], " with ", ["Technical", true], " Depth"],
 ] as const satisfies readonly (readonly HeroPhrasePart[])[];

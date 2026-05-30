@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import { HeroQuote } from "@/components/shared/hero-quote";
+import { ProjectCardDestination } from "@/components/shared/project-card-destination";
 import { ToolIconList } from "@/components/shared/tool-icon-list";
 import {
   apiIntegration,
@@ -127,6 +128,10 @@ function ProjectGrid() {
 
           <div className="mt-6">
             <PillList items={project.focus} />
+          </div>
+
+          <div className="mt-5">
+            <ProjectCardDestination destination={project.destination} />
           </div>
         </article>
       ))}

@@ -1,8 +1,10 @@
+import { designCaseStudyComingLater } from "@/data/project-destinations";
+
 export const designSection = {
   eyebrow: "Design",
   titleStart: "UX Design for",
   titleHighlight: "Better",
-  titleEnd: "digital experiences.",
+  titleEnd: "Digital Experiences.",
   quote:
     "“A user interface is like a joke. If you have to explain it, it’s not that good.”",
   quoteAttribution: "— Martin LeBlanc, designer",
@@ -31,6 +33,7 @@ export const featuredCaseStudies = {
         "Content hierarchy",
         "Design system thinking",
       ],
+      destination: designCaseStudyComingLater,
     },
     {
       title: "Job Application Tracker",
@@ -44,6 +47,7 @@ export const featuredCaseStudies = {
         "Status visibility",
         "Form usability",
       ],
+      destination: designCaseStudyComingLater,
     },
     {
       title: "Customer Management Interface",
@@ -57,6 +61,7 @@ export const featuredCaseStudies = {
         "Error states",
         "Implementation constraints",
       ],
+      destination: designCaseStudyComingLater,
     },
   ],
 } as const;
