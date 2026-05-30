@@ -3,7 +3,7 @@ import { headingFont } from "@/app/fonts";
 import type { ProjectDestination } from "@/data/project-destinations";
 
 const baseClassName = `${headingFont.className} inline-flex w-fit items-center justify-center rounded-full px-4 py-2 text-xs leading-none transition`;
-const linkClassName = `${baseClassName} border border-dashed border-[var(--accent)] bg-[var(--button-bg)] text-theme-accent shadow-[0_0_18px_rgba(114,156,174,0.16)] hover:bg-[var(--button-bg-hover)] hover:text-theme`;
+const linkClassName = `${baseClassName} border border-dashed border-[var(--accent)] bg-[var(--button-bg)] text-theme-accent shadow-[0_0_18px_rgba(114,156,174,0.16)] hover:bg-[var(--button-bg-hover)] hover:text-theme focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]`;
 const unavailableClassName = `${baseClassName} border border-dashed border-[var(--border-subtle)] text-theme-faint`;
 
 export function ProjectCardDestination({

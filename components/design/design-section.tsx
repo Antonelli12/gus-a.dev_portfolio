@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
+import { ExpandableProjectList } from "@/components/shared/expandable-project-list";
 import { HeroQuote } from "@/components/shared/hero-quote";
 import { ProjectCardDestination } from "@/components/shared/project-card-destination";
 import { ToolIconList } from "@/components/shared/tool-icon-list";
@@ -7,10 +8,12 @@ import {
   designIntro,
   designProcess,
   designSection,
+  featuredCaseStudyItems,
   featuredCaseStudies,
   researchDecisions,
   toolsMethods,
 } from "@/data/design";
+import { resolveProjectDestination } from "@/data/project-types";
 import {
   sectionEyebrowClassName,
   sectionTitleClassName,
@@ -73,10 +76,16 @@ function PillList({ items }: { items: readonly string[] }) {
 
 function CaseStudyGrid() {
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
-      {featuredCaseStudies.items.map((caseStudy) => (
+    <ExpandableProjectList
+      className="grid gap-4 lg:grid-cols-3"
+      labels={{
+        expand: "See more case studies",
+        collapse: "Collapse case studies",
+      }}
+    >
+      {featuredCaseStudyItems.map((caseStudy) => (
         <article
-          key={caseStudy.title}
+          key={caseStudy.slug}
           className="ui-pill flex h-full flex-col rounded-2xl p-5"
         >
           <div className="flex flex-wrap content-start gap-2 lg:min-h-[4.25rem]">
@@ -103,11 +112,16 @@ function CaseStudyGrid() {
           </div>
 
           <div className="mt-5">
-            <ProjectCardDestination destination={caseStudy.destination} />
+            <ProjectCardDestination
+              destination={resolveProjectDestination(
+                caseStudy,
+                "View case study",
+              )}
+            />
           </div>
         </article>
       ))}
-    </div>
+    </ExpandableProjectList>
   );
 }
 

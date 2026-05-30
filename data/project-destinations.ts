@@ -17,21 +17,19 @@ export type ProjectDestination =
       ariaLabel: string;
     };
 
+export const DETAILS_COMING_SOON_LABEL = "Details Coming Soon";
+
+export function detailsComingSoon(projectTitle: string): ProjectDestination {
+  return {
+    kind: "unavailable",
+    label: DETAILS_COMING_SOON_LABEL,
+    ariaLabel: `${DETAILS_COMING_SOON_LABEL} for ${projectTitle}`,
+  };
+}
+
 export const currentPortfolioRepository: ProjectDestination = {
   kind: "external",
   href: "https://github.com/Antonelli12/gus-a.dev_portfolio",
   label: "View GitHub repo",
   ariaLabel: "View the Portfolio Rebuild GitHub repository",
-};
-
-export const designCaseStudyComingLater: ProjectDestination = {
-  kind: "unavailable",
-  label: "Case study coming later",
-  ariaLabel: "Case study coming later",
-};
-
-export const developmentDetailsComingSoon: ProjectDestination = {
-  kind: "unavailable",
-  label: "Details coming soon",
-  ariaLabel: "Details coming soon",
 };

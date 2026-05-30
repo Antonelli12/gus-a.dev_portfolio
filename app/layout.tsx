@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { SiteBackground } from "@/components/layout/site-background";
+import { ThemeInitializer } from "@/components/layout/theme-initializer";
 import { bodyFont } from "@/app/fonts";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gus-a.dev"),
   title: {
-    default: "Gustavo Antonelli | Developer Turned Designer",
+    default: "Gus' Portfolio",
     template: "%s | Gustavo Antonelli",
   },
   description:
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Gustavo Antonelli | Developer Turned Designer",
+    title: "Gus' Portfolio",
     description:
       "UX engineering, technical product design, and product-minded frontend work with implementation depth.",
     url: "/",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Gustavo Antonelli | Developer Turned Designer",
+    title: "Gus' Portfolio",
     description:
       "UX engineering, technical product design, and product-minded frontend work with implementation depth.",
   },
@@ -44,22 +45,6 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
 };
-
-const themeScript = `
-  try {
-    const savedTheme = window.localStorage.getItem("theme");
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    const theme = savedTheme === "light" || savedTheme === "dark"
-      ? savedTheme
-      : prefersLight
-        ? "light"
-        : "dark";
-
-    document.documentElement.dataset.theme = theme;
-  } catch {
-    document.documentElement.dataset.theme = "dark";
-  }
-`;
 
 export default function RootLayout({
   children,
@@ -73,12 +58,12 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
 
       <body
         className={`${bodyFont.className} relative min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]`}
       >
+        <ThemeInitializer />
         <SiteBackground />
         <div className="relative z-10">{children}</div>
       </body>
