@@ -4,8 +4,45 @@ import { SiteBackground } from "@/components/layout/site-background";
 import { bodyFont } from "@/app/fonts";
 
 export const metadata: Metadata = {
-  title: "Gus A. Dev",
-  description: "Portfolio of Gustavo Antonelli",
+  metadataBase: new URL("https://gus-a.dev"),
+  title: {
+    default: "Gustavo Antonelli | Developer Turned Designer",
+    template: "%s | Gustavo Antonelli",
+  },
+  description:
+    "Developer turned designer focused on UX engineering, technical product design, and product-minded frontend work.",
+  applicationName: "Gustavo Antonelli Portfolio",
+  authors: [{ name: "Gustavo Antonelli" }],
+  creator: "Gustavo Antonelli",
+  keywords: [
+    "Gustavo Antonelli",
+    "Developer turned designer",
+    "UX engineer",
+    "Technical product designer",
+    "Product-minded frontend developer",
+    "Portfolio",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Gustavo Antonelli | Developer Turned Designer",
+    description:
+      "UX engineering, technical product design, and product-minded frontend work with implementation depth.",
+    url: "/",
+    siteName: "Gustavo Antonelli Portfolio",
+    type: "website",
+    locale: "en_GB",
+  },
+  twitter: {
+    card: "summary",
+    title: "Gustavo Antonelli | Developer Turned Designer",
+    description:
+      "UX engineering, technical product design, and product-minded frontend work with implementation depth.",
+  },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 const themeScript = `

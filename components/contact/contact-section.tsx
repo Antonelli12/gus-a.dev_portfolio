@@ -19,7 +19,7 @@ const iconLinkClassName =
   "ui-button inline-flex size-11 items-center justify-center rounded-full text-xl transition";
 
 const cvButtonClassName =
-  "inline-flex items-center justify-center rounded-full border border-dashed border-[var(--accent)] px-6 py-3 text-sm text-theme-accent shadow-[0_0_20px_rgba(114,156,174,0.16)] transition hover:bg-[var(--button-bg-hover)] hover:text-theme";
+  "inline-flex items-center justify-center rounded-full border border-dashed border-[var(--accent)] px-5 py-3 text-sm text-theme-accent shadow-[0_0_20px_rgba(114,156,174,0.16)] transition hover:bg-[var(--button-bg-hover)] hover:text-theme sm:px-6";
 
 function SubmissionMessage({
   state,
@@ -110,7 +110,7 @@ export function ContactSection() {
 
           <p className={sectionSummaryClassName}>{contactSection.intro}</p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {socialLinks.map((link) => (
               <a
                 key={link.href}
@@ -124,6 +124,16 @@ export function ContactSection() {
                 <i aria-hidden="true" className={link.icon} />
               </a>
             ))}
+
+            <a
+              className={`${headingFont.className} ${cvButtonClassName}`}
+              href={contactSection.cvHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Gustavo Antonelli CV"
+            >
+              Download CV
+            </a>
           </div>
         </header>
 
@@ -190,7 +200,7 @@ export function ContactSection() {
               value="New portfolio contact form submission"
             />
 
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+            <div className="mt-2 flex justify-center">
               <button
                 type="submit"
                 disabled={submissionState === "submitting"}
@@ -198,10 +208,6 @@ export function ContactSection() {
               >
                 {submissionState === "submitting" ? "Sending..." : "Submit"}
               </button>
-
-              <a className={cvButtonClassName} href={contactSection.cvHref}>
-                Download CV
-              </a>
             </div>
           </div>
         </form>
