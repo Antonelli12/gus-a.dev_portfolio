@@ -78,7 +78,7 @@ function CaseStudyGrid() {
           key={caseStudy.title}
           className="ui-pill flex h-full flex-col rounded-2xl p-5"
         >
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap content-start gap-2 lg:min-h-[4.25rem]">
             <span className="rounded-full border border-[var(--border-subtle)] px-3 py-1 text-xs text-theme-faint">
               {caseStudy.type}
             </span>
@@ -88,7 +88,7 @@ function CaseStudyGrid() {
           </div>
 
           <h3
-            className={`${headingFont.className} mt-5 text-2xl text-theme-accent`}
+            className={`${headingFont.className} mt-5 text-2xl leading-tight text-theme-accent lg:min-h-[4rem]`}
           >
             {caseStudy.title}
           </h3>
