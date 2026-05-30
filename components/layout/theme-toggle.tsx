@@ -4,16 +4,19 @@ import { useEffect, useState } from "react";
 
 type Theme = "dark" | "light";
 
-export function ThemeToggle() {
+export function ThemeToggle({ compact = false }: { compact?: boolean }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
     const currentTheme =
       document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    const timeoutId = window.setTimeout(() => {
+      setTheme(currentTheme);
+      setHasMounted(true);
+    }, 0);
 
-    setTheme(currentTheme);
-    setHasMounted(true);
+    return () => window.clearTimeout(timeoutId);
   }, []);
 
   function toggleTheme() {
@@ -32,11 +35,15 @@ export function ThemeToggle() {
       aria-label="Toggle theme"
       aria-pressed={isLight}
       onClick={toggleTheme}
-      className="group relative h-5 w-9 rounded-full border border-[var(--border-subtle)] bg-[var(--toggle-bg)] shadow-[var(--toggle-shadow)] transition hover:bg-[var(--toggle-bg-hover)]"
+      className={`group relative rounded-full border border-[var(--border-subtle)] bg-[var(--toggle-bg)] shadow-[var(--toggle-shadow)] transition hover:bg-[var(--toggle-bg-hover)] ${
+        compact ? "h-5 w-9" : "h-7 w-12"
+      }`}
     >
       <span
-        className={`absolute left-0.5 top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-[var(--toggle-knob)] shadow-[var(--toggle-knob-shadow)] transition ${
-          isLight ? "translate-x-4" : "translate-x-0"
+        className={`absolute top-1/2 -translate-y-1/2 rounded-full bg-[var(--toggle-knob)] shadow-[var(--toggle-knob-shadow)] transition ${
+          compact
+            ? `left-0.5 h-4 w-4 ${isLight ? "translate-x-4" : "translate-x-0"}`
+            : `left-1 h-5 w-5 ${isLight ? "translate-x-5" : "translate-x-0"}`
         }`}
       />
     </button>
