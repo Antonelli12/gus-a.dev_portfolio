@@ -70,11 +70,11 @@ The Contact form SHALL submit form data to the configured Formspree endpoint usi
 - **THEN** an error message is shown temporarily and the visitor can try again or use LinkedIn
 
 ### Requirement: Baseline known issues are recorded
-The baseline SHALL record current non-blocking issues without requiring this change to fix them.
+The baseline SHALL record current non-blocking issues without requiring unrelated changes to fix them. After application-readiness polish, the configured CV PDF SHALL no longer be listed as missing if the real file has been added successfully.
 
 #### Scenario: Future change reviews known issues
 - **WHEN** a future proposal evaluates baseline issues
-- **THEN** it can see that the configured CV PDF is missing from `public/`, `contactSection.title` is currently unused by the Contact page, the README is still default create-next-app content, `public/` contains default scaffold SVG assets rather than portfolio-specific media, and macOS development from an external SSD may generate `._*` AppleDouble sidecar files that should not be committed
+- **THEN** it can see remaining known issues such as default README content, any default scaffold SVG assets that were not safely removable, and macOS development from an external SSD generating `._*` AppleDouble sidecar files that should not be committed
 
 #### Scenario: AppleDouble sidecar files appear
 - **WHEN** generated `._*` AppleDouble sidecar files appear during macOS development from an external SSD
@@ -111,7 +111,7 @@ Project detail interactions SHALL preserve whether the visitor is viewing a Desi
 - **THEN** the detail experience keeps the visitor oriented around implementation and technical evidence
 
 ### Requirement: Contact interaction supports repositioned conversion
-The Contact page SHALL make it clear how to access Gus's CV, GitHub, LinkedIn, and message form, while supporting conversion for UX Engineer, Technical Product Designer, Product-minded Frontend Developer, and AI/Product workflow opportunities. Contact actions and role-openness copy SHALL be verified during application-readiness polish.
+The Contact page SHALL make it clear how to access Gus's CV, GitHub, LinkedIn, and message form, while supporting conversion for UX Engineer, Technical Product Designer, Product-minded Frontend Developer, and AI/Product workflow opportunities. Contact actions SHALL be verified during application-readiness polish.
 
 #### Scenario: Visitor decides to contact Gus
 - **WHEN** a visitor reaches the Contact page after reviewing the repositioned portfolio
@@ -120,10 +120,6 @@ The Contact page SHALL make it clear how to access Gus's CV, GitHub, LinkedIn, a
 #### Scenario: Application links are verified
 - **WHEN** application-readiness polish is implemented
 - **THEN** GitHub, LinkedIn, Download CV, and configured contact form links are inspected or validated so obvious broken-link issues are addressed
-
-#### Scenario: Visitor reads Contact role openness
-- **WHEN** a visitor reads the Contact intro area
-- **THEN** they can see a subtle role-direction statement without losing access to the main contact actions
 
 ### Requirement: Home CTAs preserve next-step clarity
 The Home page SHALL keep clear interactive calls to view Design work and Development work.
@@ -200,4 +196,18 @@ The implementation validation SHALL include a Lighthouse or Chrome DevTools Ligh
 #### Scenario: Lighthouse cannot run locally
 - **WHEN** Codex cannot run Lighthouse in the environment
 - **THEN** the final implementation report documents exact manual steps or a command Gus can run, and validation still includes code inspection plus manual keyboard/responsive review
+
+### Requirement: CV download remains keyboard accessible
+The Download CV action SHALL remain reachable by keyboard and expose understandable link text or an accessible name.
+
+#### Scenario: Visitor tabs through Contact actions
+- **WHEN** a keyboard user reaches the Contact action cluster
+- **THEN** Download CV, GitHub, and LinkedIn are focusable and clearly identifiable
+
+### Requirement: Application readiness avoids browser-automation dependency
+Application-readiness validation SHALL rely on code inspection and local validation commands unless a later implementation instruction explicitly requests browser automation.
+
+#### Scenario: Readiness checks are reported
+- **WHEN** implementation validation is reported
+- **THEN** the report identifies link/file checks, lint/build results, and any cleanup performed without requiring screenshot automation
 

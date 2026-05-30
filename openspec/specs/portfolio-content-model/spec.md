@@ -87,19 +87,15 @@ The Development page SHALL preserve technical credibility and SHALL support the 
 - **THEN** the cards prioritise implementation evidence, architecture, integration, testing, maintainability, and technical trade-offs
 
 ### Requirement: Contact page uses contact configuration data
-The Contact page SHALL use contact data for intro copy, a subtle role-openness line, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed near the social links as a separate recruiter-facing action that remains visually distinct from icon-only social buttons.
+The Contact page SHALL use contact data for intro copy, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed near the social links as a separate recruiter-facing action that remains visually distinct from icon-only social buttons.
 
 #### Scenario: Visitor opens Contact
 - **WHEN** a visitor opens `/contact`
-- **THEN** the page renders contact intro copy, a short role-openness statement, Download CV, GitHub, LinkedIn, and the contact form using configured contact data
+- **THEN** the page renders contact intro copy, Download CV, GitHub, LinkedIn, the contact form, and role-direction messaging using configured contact data
 
 #### Scenario: Visitor scans Contact actions
 - **WHEN** a visitor scans Contact actions
 - **THEN** social destinations and Download CV appear together as accessible actions outside the form button row, with Download CV presented as a distinct recruiter-facing CTA
-
-#### Scenario: Visitor reads role openness
-- **WHEN** a visitor reads the Contact intro area
-- **THEN** a separate short paragraph states that Gus is open to UX Engineer, Technical Product Designer, and product-focused frontend roles without making the page feel cluttered
 
 ### Requirement: Repeated content renders from arrays
 Repeated portfolio content SHALL render from arrays where modeled, including process steps, focus pills, project cards, case study cards, tool groups, credential items, social links, implementation areas, skill clusters, design methods, platform/context tags, tech stack tags, tooling tags, and project detail sections.
@@ -235,4 +231,18 @@ The portfolio SHALL provide concise metadata copy for Home, About, Design, Devel
 #### Scenario: Metadata is drafted
 - **WHEN** a route title, description, OpenGraph title, or social description is written
 - **THEN** it uses public, credible wording and avoids unsupported claims, invented outcomes, or inflated seniority
+
+### Requirement: CV download uses a real public asset
+The portfolio SHALL provide the real CV file at the public path referenced by the Contact data model.
+
+#### Scenario: Visitor activates Download CV
+- **WHEN** a visitor activates the Download CV action
+- **THEN** the configured href resolves to an existing public CV file rather than a missing asset
+
+### Requirement: Application readiness content avoids broad rewrites
+Application-readiness copy changes SHALL be limited to obvious clarity, metadata, broken-link fixes, or action labelling needed for job applications.
+
+#### Scenario: Application readiness polish is implemented
+- **WHEN** page copy is touched during this change
+- **THEN** the change preserves the current developer-turned-designer narrative and avoids major rewrites or unsupported new claims
 
