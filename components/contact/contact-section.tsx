@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import { contactSection, socialLinks } from "@/data/contact";
 import {
@@ -15,36 +15,16 @@ type SubmissionState = "idle" | "submitting" | "success" | "error";
 const fieldClassName =
   "ui-field rounded-xl px-4 py-3 outline-none transition";
 
-const linkButtonClassName =
-  "ui-button rounded-full px-5 py-2 text-sm transition";
+const iconLinkClassName =
+  "ui-button inline-flex size-11 items-center justify-center rounded-full text-xl transition";
 
-function ContactLinkButton({
-  href,
-  children,
-}: {
-  href: string;
-  children: ReactNode;
-}) {
-  const isExternalLink = href.startsWith("http");
-
-  return (
-    <a
-      href={href}
-      target={isExternalLink ? "_blank" : undefined}
-      rel={isExternalLink ? "noreferrer" : undefined}
-      className={linkButtonClassName}
-    >
-      {children}
-    </a>
-  );
-}
+const cvButtonClassName =
+  "inline-flex items-center justify-center rounded-full border border-dashed border-[var(--accent)] px-6 py-3 text-sm text-theme-accent shadow-[0_0_20px_rgba(114,156,174,0.16)] transition hover:bg-[var(--button-bg-hover)] hover:text-theme";
 
 function SubmissionMessage({
   state,
-  isVisible,
 }: {
   state: SubmissionState;
-  isVisible: boolean;
 }) {
   if (state !== "success" && state !== "error") {
     return null;
@@ -58,11 +38,7 @@ function SubmissionMessage({
   const style = state === "success" ? "ui-status-success" : "ui-status-error";
 
   return (
-    <div
-      className={`rounded-xl border px-4 py-3 text-sm transition-opacity duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      } ${style}`}
-    >
+    <div className={`rounded-xl border px-4 py-3 text-sm ${style}`}>
       {message}
     </div>
   );
@@ -71,25 +47,17 @@ function SubmissionMessage({
 export function ContactSection() {
   const [submissionState, setSubmissionState] =
     useState<SubmissionState>("idle");
-  const [isMessageVisible, setIsMessageVisible] = useState(false);
 
   useEffect(() => {
     if (submissionState !== "success" && submissionState !== "error") {
       return;
     }
 
-    setIsMessageVisible(true);
-
-    const fadeTimeoutId = window.setTimeout(() => {
-      setIsMessageVisible(false);
-    }, 3000);
-
     const clearTimeoutId = window.setTimeout(() => {
       setSubmissionState("idle");
     }, 3500);
 
     return () => {
-      window.clearTimeout(fadeTimeoutId);
       window.clearTimeout(clearTimeoutId);
     };
   }, [submissionState]);
@@ -98,7 +66,6 @@ export function ContactSection() {
     const formData = new FormData(form);
 
     setSubmissionState("submitting");
-    setIsMessageVisible(false);
 
     try {
       const response = await fetch(contactSection.formspreeEndpoint, {
@@ -137,21 +104,25 @@ export function ContactSection() {
               className={highlightFont.className}
               style={sectionTitleHighlightStyle}
             >
-              connect.
+              Connect.
             </span>
           </h2>
 
           <p className={sectionSummaryClassName}>{contactSection.intro}</p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <ContactLinkButton href={contactSection.cvHref}>
-              Download CV
-            </ContactLinkButton>
-
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             {socialLinks.map((link) => (
-              <ContactLinkButton key={link.href} href={link.href}>
-                {link.label}
-              </ContactLinkButton>
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={link.label}
+                title={link.label}
+                className={iconLinkClassName}
+              >
+                <i aria-hidden="true" className={link.icon} />
+              </a>
             ))}
           </div>
         </header>
@@ -164,10 +135,7 @@ export function ContactSection() {
           className="ui-card rounded-2xl p-6 sm:p-8"
         >
           <div className="grid gap-5">
-            <SubmissionMessage
-              state={submissionState}
-              isVisible={isMessageVisible}
-            />
+            <SubmissionMessage state={submissionState} />
 
             <label className="grid gap-2">
               <span
@@ -222,13 +190,19 @@ export function ContactSection() {
               value="New portfolio contact form submission"
             />
 
-            <button
-              type="submit"
-              disabled={submissionState === "submitting"}
-              className={`${headingFont.className} ui-button mt-2 w-fit rounded-full px-6 py-3 text-lg transition hover:shadow-[0_0_24px_rgba(114,156,174,0.25)] disabled:cursor-not-allowed disabled:opacity-50`}
-            >
-              {submissionState === "submitting" ? "Sending..." : "Submit"}
-            </button>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+              <button
+                type="submit"
+                disabled={submissionState === "submitting"}
+                className={`${headingFont.className} ui-button w-fit rounded-full px-6 py-3 text-lg transition hover:shadow-[0_0_24px_rgba(114,156,174,0.25)] disabled:cursor-not-allowed disabled:opacity-50`}
+              >
+                {submissionState === "submitting" ? "Sending..." : "Submit"}
+              </button>
+
+              <a className={cvButtonClassName} href={contactSection.cvHref}>
+                Download CV
+              </a>
+            </div>
           </div>
         </form>
       </div>

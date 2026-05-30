@@ -1,10 +1,8 @@
-import type { CSSProperties } from "react";
-
 export const sectionEyebrowClassName =
-  "mb-5 text-sm uppercase tracking-[0.45em] text-theme-faint";
+  "mb-5 text-xs uppercase tracking-[0.32em] text-theme-faint sm:text-sm sm:tracking-[0.45em]";
 
 export const sectionTitleClassName =
-  "mt-4 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[0.95] tracking-tight";
+  "mt-4 max-w-4xl text-[clamp(2rem,5.5vw,4.5rem)] leading-[0.98] tracking-tight sm:leading-[0.95]";
 
 export const sectionTitleHighlightStyle = {
   color: "var(--title-highlight)",

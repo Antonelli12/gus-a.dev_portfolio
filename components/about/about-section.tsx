@@ -4,11 +4,9 @@ import { useState, type ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
 import {
   aboutSection,
-  developerToDesigner,
-  learningCredentials,
-  myProcess,
-  originStory,
-  technicalFoundation,
+  structuredReview,
+  technicalDepth,
+  transition,
 } from "@/data/about";
 import {
   sectionEyebrowClassName,
@@ -71,22 +69,26 @@ function ListBlock({ items }: { items: readonly string[] }) {
   );
 }
 
-function OriginStoryBlock() {
+function TransitionBlock() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const detailsId = "path-details";
 
   return (
     <AboutBlock
-      id="origin-story"
-      title={originStory.title}
+      id="from-code-to-product-thinking"
+      title={transition.title}
       className="lg:col-span-2"
     >
-      <div className="relative overflow-hidden rounded-b-[1.1rem]">
+      <ParagraphBlock body={transition.lead} />
+
+      <div className="relative mt-5 overflow-hidden rounded-b-[1.1rem]">
         <div
+          id={detailsId}
           className={`space-y-5 overflow-hidden transition-[max-height] duration-300 ease-out ${
-            isExpanded ? "max-h-[900px]" : "max-h-48"
+            isExpanded ? "max-h-[900px]" : "max-h-20 sm:max-h-24"
           }`}
         >
-          {originStory.body.map((paragraph, index) => (
+          {transition.details.map((paragraph, index) => (
             <p key={`${paragraph}-${index}`}>{paragraph}</p>
           ))}
         </div>
@@ -101,6 +103,8 @@ function OriginStoryBlock() {
       <button
         type="button"
         onClick={() => setIsExpanded((current) => !current)}
+        aria-expanded={isExpanded}
+        aria-controls={detailsId}
         className="ui-button mt-5 rounded-full px-5 py-2 text-sm transition"
       >
         {isExpanded ? "Show less" : "Read more"}
@@ -141,33 +145,16 @@ export function AboutSection() {
         </header>
 
         <div className="mt-20 grid gap-6 lg:grid-cols-2">
-          <OriginStoryBlock />
+          <TransitionBlock />
 
-          <AboutBlock
-            id="developer-to-designer"
-            title={developerToDesigner.title}
-          >
-            <ParagraphBlock body={developerToDesigner.body} />
+          <AboutBlock id="technical-depth" title={technicalDepth.title}>
+            <ParagraphBlock body={technicalDepth.body} />
           </AboutBlock>
 
-          <AboutBlock id="my-process" title={myProcess.title}>
-            <ListBlock items={myProcess.items} />
-          </AboutBlock>
-
-          <AboutBlock
-            id="technical-foundation"
-            title={technicalFoundation.title}
-          >
-            <ParagraphBlock body={technicalFoundation.body} />
-          </AboutBlock>
-
-          <AboutBlock
-            id="learning-credentials"
-            title={learningCredentials.title}
-          >
+          <AboutBlock id="structured-review" title={structuredReview.title}>
             <div className="space-y-6">
-              <ParagraphBlock body={learningCredentials.body} />
-              <ListBlock items={learningCredentials.items} />
+              <ParagraphBlock body={structuredReview.body} />
+              <ListBlock items={structuredReview.items} />
             </div>
           </AboutBlock>
         </div>

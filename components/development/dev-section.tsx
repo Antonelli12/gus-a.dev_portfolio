@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
+import { HeroQuote } from "@/components/shared/hero-quote";
+import { ToolIconList } from "@/components/shared/tool-icon-list";
 import {
   apiIntegration,
   designSystemsComponents,
@@ -11,7 +13,6 @@ import {
 } from "@/data/development";
 import {
   sectionEyebrowClassName,
-  sectionSummaryClassName,
   sectionTitleClassName,
   sectionTitleHighlightStyle,
 } from "@/lib/typography";
@@ -144,7 +145,7 @@ function ToolsGrid() {
             {group.title}
           </h3>
 
-          <PillList items={group.items} />
+          <ToolIconList items={group.items} />
         </article>
       ))}
     </div>
@@ -171,12 +172,15 @@ export function DevSection() {
             {devSection.titleEnd}
           </h1>
 
-          <p className={sectionSummaryClassName}>{devSection.intro}</p>
+          <HeroQuote
+            quote={devSection.quote}
+            attribution={devSection.quoteAttribution}
+          />
         </header>
 
         <div className="mt-20 grid gap-6 lg:grid-cols-2">
           <DevBlock
-            id="development-direction"
+            id="how-i-build"
             title={developmentIntro.title}
             className="lg:col-span-2"
           >

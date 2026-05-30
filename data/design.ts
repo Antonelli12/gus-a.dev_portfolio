@@ -1,18 +1,18 @@
 export const designSection = {
   eyebrow: "Design",
-  titleStart: "UX / Product",
-  titleHighlight: "design",
-  titleEnd: "for clearer digital experiences.",
-  intro:
-    "This page collects the design side of my portfolio: product thinking, user flows, interface structure, research, prototypes, and case studies. It represents the direction I am moving towards professionally.",
+  titleStart: "UX Design for",
+  titleHighlight: "Better",
+  titleEnd: "digital experiences.",
+  quote:
+    "“A user interface is like a joke. If you have to explain it, it’s not that good.”",
+  quoteAttribution: "— Martin LeBlanc, designer",
 };
 
 export const designIntro = {
-  title: "Design Direction",
+  title: "How I Approach Design",
   body: [
-    "My design work is currently focused on turning unclear digital experiences into something more structured, usable, and understandable.",
-    "I am especially interested in the space between product thinking and interface design: understanding what a user is trying to do, shaping the journey around that goal, and making the screen support the task rather than distract from it.",
-    "Because I come from a development background, I also think about how design decisions translate into real interfaces, components, states, data, and edge cases.",
+    "I start by trying to empathise with the user: what they are trying to achieve, what gets in the way, and what would make the next step feel clearer.",
+    "My development background keeps the work grounded. While shaping a journey or layout, I am also thinking about components, data, validation, responsiveness, and edge cases.",
   ],
 };
 
@@ -24,7 +24,7 @@ export const featuredCaseStudies = {
       type: "UX / Visual Identity / Frontend",
       status: "In progress",
       description:
-        "A redesign of my personal portfolio around a new professional direction: developer turned designer. The project explores positioning, information architecture, visual identity, theme systems, and the balance between personality and usability.",
+        "A redesign of my personal site around a sharper UX/product direction, with work on information architecture, visual identity, theme behaviour, and a clearer design and development narrative.",
       focus: [
         "Information architecture",
         "Visual direction",
@@ -35,9 +35,9 @@ export const featuredCaseStudies = {
     {
       title: "Job Application Tracker",
       type: "Product Design / Interface Design",
-      status: "Planned case study",
+      status: "Upcoming case study",
       description:
-        "A product concept for tracking job applications, statuses, notes, and follow-ups. The design focus is on reducing friction, making progress visible, and helping users manage an emotionally tiring process with more clarity.",
+        "A product concept for tracking job applications, statuses, notes, and follow-ups. The design focus is reducing friction, making progress visible, and helping users manage a tiring process with more clarity.",
       focus: [
         "User flows",
         "Dashboard structure",
@@ -48,7 +48,7 @@ export const featuredCaseStudies = {
     {
       title: "Customer Management Interface",
       type: "Interface Review / Product Thinking",
-      status: "Planned case study",
+      status: "Project work",
       description:
         "A review of a customer and account management interface from a usability perspective, looking at how technical workflows can be translated into clearer user-facing screens.",
       focus: [
@@ -116,39 +116,39 @@ export const toolsMethods = {
   title: "Tools & Methods",
   groups: [
     {
-      title: "Product Thinking",
+      title: "Tools",
       items: [
-        "Problem framing",
-        "User goals",
-        "Journey mapping",
-        "Feature prioritisation",
+        { label: "Figma", icon: "devicon-figma-plain" },
+        { label: "Miro" },
+        { label: "Azure DevOps", icon: "devicon-azuredevops-plain" },
+        { label: "Microsoft Copilot" },
       ],
     },
     {
-      title: "UX Design",
+      title: "UX Methods",
       items: [
-        "User flows",
-        "Wireframes",
-        "Information architecture",
-        "Usability review",
+        { label: "Problem framing" },
+        { label: "User flows" },
+        { label: "Journey mapping" },
+        { label: "Wireframes" },
       ],
     },
     {
-      title: "Interface Design",
+      title: "Interface Work",
       items: [
-        "Layout hierarchy",
-        "Component states",
-        "Responsive structure",
-        "Accessibility awareness",
+        { label: "Information architecture" },
+        { label: "Layout hierarchy" },
+        { label: "Component states" },
+        { label: "Responsive structure" },
       ],
     },
     {
-      title: "Prototyping",
+      title: "Review",
       items: [
-        "Low-fidelity concepts",
-        "Interactive prototypes",
-        "Design iteration",
-        "Frontend validation",
+        { label: "Usability review" },
+        { label: "Accessibility awareness" },
+        { label: "Frontend validation" },
+        { label: "Design iteration" },
       ],
     },
   ],

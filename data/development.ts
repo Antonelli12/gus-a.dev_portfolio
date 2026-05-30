@@ -1,18 +1,19 @@
 export const devSection = {
   eyebrow: "Development",
-  titleStart: "Building",
-  titleHighlight: "interfaces",
-  titleEnd: "with design context.",
-  intro:
-    "This page collects the development side of my portfolio: frontend implementation, API integration, responsive interfaces, component systems, and the technical constraints behind usable digital products.",
+  titleStart: "Where Design",
+  titleHighlight: "Becomes",
+  titleEnd: "Real",
+  quote:
+    "“Design is not just what it looks like and feels like. Design is how it works.”",
+  quoteAttribution: "— Steve Jobs, Apple co-founder",
 };
 
 export const developmentIntro = {
-  title: "Development Direction",
+  title: "How I Build",
   body: [
-    "I still want frontend development to remain part of my work. I enjoy turning design ideas into real interfaces, connecting them to data, and understanding how decisions behave once they become components, routes, forms, states, and user flows.",
-    "My development background gives me a practical understanding of what happens beneath the surface of an interface. That helps me think about feasibility, edge cases, loading states, validation, responsiveness, accessibility, and how a product behaves outside the ideal happy path.",
-    "The main value I want to bring is the ability to understand both sides of the process: the design intent behind an experience and the implementation constraints that shape how it actually gets built.",
+    "I like building interfaces that have to work under real conditions, not just in a tidy mockup.",
+    "I care about forms, state, data, validation, responsiveness, and edge cases because those details shape how usable the product feels.",
+    "The part I enjoy most is connecting design intent to practical implementation: keeping the idea clear while making it work in the browser.",
   ],
 };
 
@@ -54,15 +55,15 @@ export const apiIntegration = {
     "Loading and error states",
     "Validation feedback",
     "Data-driven UI",
-    "Future GraphQL integration",
+    "GraphQL Integration",
   ],
 };
 
 export const designSystemsComponents = {
   title: "Design Systems & Components",
   body: [
-    "I want my frontend work to support a consistent design language rather than becoming a collection of one-off screens. This portfolio is already moving in that direction through reusable cards, buttons, fields, pills, theme variables, and typography helpers.",
-    "The aim is not to over-engineer every small detail. The aim is to make the interface easier to maintain, easier to extend, and more visually consistent as the site grows.",
+    "I prefer reusable patterns because they make interfaces easier to keep consistent, reliable, and manageable as they grow. Cards, forms, and buttons should behave predictably enough that users are not relearning the product on every screen.",
+    "The goal is simple: fewer fragile one-offs, clearer decisions, and a UI that is easier to maintain.",
   ],
 };
 
@@ -74,7 +75,7 @@ export const technicalProjects = {
       type: "Next.js / React / TypeScript / Tailwind",
       status: "In progress",
       description:
-        "A rebuild of my personal portfolio around a new developer turned designer direction, using reusable theme-aware components, route-based structure, and a custom CRT-inspired visual identity.",
+        "A rebuild of my personal site around a sharper design and development narrative, using reusable theme-aware components, route-based structure, and a custom CRT-inspired visual identity.",
       focus: [
         "Next.js routing",
         "Theme system",
@@ -98,9 +99,9 @@ export const technicalProjects = {
     {
       title: "Job Application Tracker",
       type: "Product concept / Frontend project",
-      status: "Planned",
+      status: "Upcoming",
       description:
-        "A planned application for tracking job applications, statuses, notes, and follow-ups. The development focus will be on stateful UI, filtering, sorting, forms, and clear status visibility.",
+        "An application for tracking job applications, statuses, notes, and follow-ups. The development focus is stateful UI, filtering, sorting, forms, and clear status visibility.",
       focus: [
         "Stateful UI",
         "Filtering",
@@ -116,19 +117,37 @@ export const toolsStack = {
   groups: [
     {
       title: "Frontend",
-      items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+      items: [
+        { label: "React", icon: "devicon-react-original" },
+        { label: "Next.js", icon: "devicon-nextjs-plain" },
+        { label: "TypeScript", icon: "devicon-typescript-plain" },
+        { label: "JavaScript", icon: "devicon-javascript-plain" },
+      ],
     },
     {
       title: "Styling",
-      items: ["Tailwind CSS", "CSS variables", "Responsive design", "Theme tokens"],
+      items: [
+        { label: "Tailwind CSS", icon: "devicon-tailwindcss-original" },
+        { label: "CSS variables" },
+        { label: "Responsive design" },
+      ],
     },
     {
       title: "Integration",
-      items: ["REST APIs", "Formspree", "Postman", "Future GraphQL"],
+      items: [
+        { label: "REST APIs" },
+        { label: "Postman", icon: "devicon-postman-plain" },
+        { label: "GraphQL", icon: "devicon-graphql-plain" },
+      ],
     },
     {
       title: "Workflow",
-      items: ["Git", "GitHub", "Vercel", "VS Code", "Linux"],
+      items: [
+        { label: "Git", icon: "devicon-git-plain" },
+        { label: "GitHub", icon: "devicon-github-original" },
+        { label: "Vercel", icon: "devicon-vercel-original" },
+        { label: "VS Code", icon: "devicon-vscode-plain" },
+      ],
     },
   ],
 } as const;

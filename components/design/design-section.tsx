@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
+import { HeroQuote } from "@/components/shared/hero-quote";
+import { ToolIconList } from "@/components/shared/tool-icon-list";
 import {
   designIntro,
   designProcess,
@@ -10,7 +12,6 @@ import {
 } from "@/data/design";
 import {
   sectionEyebrowClassName,
-  sectionSummaryClassName,
   sectionTitleClassName,
   sectionTitleHighlightStyle,
 } from "@/lib/typography";
@@ -149,7 +150,7 @@ function DecisionList() {
 
 function ToolsGrid() {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-4">
       {toolsMethods.groups.map((group) => (
         <article key={group.title} className="ui-pill rounded-2xl p-5">
           <h3
@@ -158,7 +159,7 @@ function ToolsGrid() {
             {group.title}
           </h3>
 
-          <PillList items={group.items} />
+          <ToolIconList items={group.items} />
         </article>
       ))}
     </div>
@@ -172,25 +173,29 @@ export function DesignSection() {
         <header className="max-w-4xl">
           <p className={sectionEyebrowClassName}>{designSection.eyebrow}</p>
 
-          <h1 className={`${headingFont.className} ${sectionTitleClassName}`}>
-            {designSection.titleStart}
-            <br />
+          <h1
+            className={`${headingFont.className} ${sectionTitleClassName} break-words [text-wrap:balance]`}
+          >
+            {designSection.titleStart}{" "}
             <span
               className={highlightFont.className}
               style={sectionTitleHighlightStyle}
             >
               {designSection.titleHighlight}
             </span>
-            <br />
+            {" "}
             {designSection.titleEnd}
           </h1>
 
-          <p className={sectionSummaryClassName}>{designSection.intro}</p>
+          <HeroQuote
+            quote={designSection.quote}
+            attribution={designSection.quoteAttribution}
+          />
         </header>
 
         <div className="mt-20 grid gap-6 lg:grid-cols-2">
           <DesignBlock
-            id="design-direction"
+            id="design-approach"
             title={designIntro.title}
             className="lg:col-span-2"
           >

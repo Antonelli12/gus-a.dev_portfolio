@@ -2,17 +2,10 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
+import { homeHero, homeHeroPhrases, type HeroPhrasePart } from "@/data/home";
 
-const GREETING = "Hello There!";
-const PREFIX = "I am ";
-const NAME = "Gus";
-
-const PHRASES = [
-  [", a ", ["Frontend", true], " ", ["Developer", true]],
-  [", a ", ["Product", true], " ", ["Designer", true]],
-  [", designing thoughtful ", ["digital", true], " ", ["experiences", true]],
-  [", building ", ["user", true], " ", ["centric", true], " ", "interfaces"]
-] as const;
+const { greeting: GREETING, prefix: PREFIX, name: NAME } = homeHero;
+const PHRASES = homeHeroPhrases;
 
 const SPEED = {
   type: 112,
@@ -34,12 +27,12 @@ type Phase =
   | "holdingPhrase"
   | "deletingPhrase";
 
-type Part = string | readonly [string, true];
+type Part = HeroPhrasePart;
 
 const textStyle = {
-  fontSize: "clamp(2.7rem, 5vw, 5.8rem)",
-  lineHeight: 1.08,
-  letterSpacing: "0.02em",
+  fontSize: "clamp(1.85rem, 9vw, 5.8rem)",
+  lineHeight: 1.1,
+  letterSpacing: "0.01em",
 } as const;
 
 function flatten(parts: readonly Part[]) {
@@ -112,11 +105,6 @@ export function TypedGreeting() {
 
   useEffect(() => {
     if (reducedMotion) {
-      setGreeting("");
-      setPrefix(PREFIX);
-      setName(NAME);
-      setPhraseCount(phraseText.length);
-      setPhase("holdingPhrase");
       return;
     }
 
@@ -184,18 +172,22 @@ export function TypedGreeting() {
     return () => clearTimeout(timeout);
   }, [phase, greeting, prefix, name, phraseCount, phraseText, reducedMotion]);
 
- const showCaret =
-  !reducedMotion &&
-  (phase === "typingGreeting" ||
-    phase === "typingPrefix" ||
-    phase === "typingName" ||
-    phase === "typingPhrase");
+  const showCaret =
+    !reducedMotion &&
+    (phase === "typingGreeting" ||
+      phase === "typingPrefix" ||
+      phase === "typingName" ||
+      phase === "typingPhrase");
+  const renderedGreeting = reducedMotion ? "" : greeting;
+  const renderedPrefix = reducedMotion ? PREFIX : prefix;
+  const renderedName = reducedMotion ? NAME : name;
+  const renderedVisiblePhrase = reducedMotion ? PHRASES[0] : visiblePhrase;
 
   return (
     <div className="flex flex-col items-center text-center text-theme">
       <div className="w-[min(88vw,980px)] min-h-[1.3em]">
         <p className={headingFont.className} style={textStyle}>
-          {greeting}
+          {renderedGreeting}
           {showCaret && phase === "typingGreeting" && (
             <span className="ml-1 inline-block animate-pulse text-theme-muted">|</span>
           )}
@@ -207,14 +199,14 @@ export function TypedGreeting() {
           className={headingFont.className}
           style={{ ...textStyle, whiteSpace: "normal", wordBreak: "normal" }}
         >
-          <span>{prefix}</span>
+          <span>{renderedPrefix}</span>
           <span
             className={highlightFont.className}
             style={{ color: "var(--accent)", fontSize: "0.74em", lineHeight: 1 }}
           >
-            {name}
+            {renderedName}
           </span>
-          <span>{renderParts(visiblePhrase)}</span>
+          <span>{renderParts(renderedVisiblePhrase)}</span>
           {showCaret && phase !== "typingGreeting" && (
             <span className="ml-1 inline-block animate-pulse text-theme-muted">|</span>
           )}

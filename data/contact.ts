@@ -11,9 +11,11 @@ export const socialLinks = [
   {
     label: "GitHub",
     href: "https://github.com/Antonelli12",
+    icon: "devicon-github-original",
   },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/gus-r-antonelli/",
+    icon: "devicon-linkedin-plain",
   },
 ] as const;
