@@ -4,7 +4,7 @@
 TBD - created by archiving change document-portfolio-baseline. Update Purpose after archive.
 ## Requirements
 ### Requirement: App Router pages expose the current portfolio routes
-The portfolio SHALL preserve the core Next.js App Router page set: `/`, `/about`, `/design`, `/development`, and `/contact`. Future implementation MAY add project detail access through dedicated routes such as `/design/[slug]` and `/development/[slug]`, or through a reusable detail view pattern, after evaluating the content and sharing needs. This change SHALL NOT add full project detail pages unless reliable content already exists and the implementation explicitly remains within this proposal's scope, and it SHALL NOT create unsupported internal routes as placeholder destinations.
+The portfolio SHALL preserve the core Next.js App Router page set: `/`, `/about`, `/design`, `/development`, and `/contact`. Project detail access SHALL use route-based detail pages at `/design/[slug]` for Design case studies and `/development/[slug]` for Development projects when reliable detail content exists. This change MAY add route/data/component infrastructure for those paths, but it SHALL NOT create unsupported internal routes or thin placeholder detail pages as card destinations.
 
 #### Scenario: Visitor opens a top-level route
 - **WHEN** a visitor navigates directly to `/about`, `/design`, `/development`, or `/contact`
@@ -16,7 +16,7 @@ The portfolio SHALL preserve the core Next.js App Router page set: `/`, `/about`
 
 #### Scenario: Future detail route strategy is selected
 - **WHEN** project click-through content is implemented
-- **THEN** the implementation preserves the five core routes and uses either dedicated project routes or a reusable detail view pattern
+- **THEN** the implementation preserves the five core routes and uses dedicated project routes for reliable detail content
 
 #### Scenario: This change handles project destinations
 - **WHEN** this change improves project-card destination behavior
@@ -88,11 +88,11 @@ The Design and Development pages SHALL feel like parallel evidence pages with si
 - **THEN** the pages feel related in structure and rhythm while Design prioritises product/design reasoning and Development prioritises implementation evidence
 
 ### Requirement: Project detail access supports deeper evidence
-Project cards on Design and Development SHALL support click-through access only when an existing internal detail destination, verified GitHub repository, or verified external URL is available; otherwise they SHALL use an honest unavailable state or remain non-clickable.
+Project cards on Design and Development SHALL support click-through access only when an existing internal detail destination has enough real, specific content, a verified GitHub repository exists, or a verified external URL is available; otherwise they SHALL use the non-clickable "Details Coming Soon" state.
 
 #### Scenario: Visitor opens a project card
 - **WHEN** a visitor activates a Design or Development project card with a real internal detail destination
-- **THEN** the site can present deeper project content without losing the page's Design or Development context
+- **THEN** the site presents the detail page at `/design/[slug]` or `/development/[slug]` without losing the page's Design or Development context
 
 #### Scenario: Visitor opens an external project destination
 - **WHEN** a visitor activates a Design or Development project card with a verified external destination
@@ -102,12 +102,16 @@ Project cards on Design and Development SHALL support click-through access only 
 - **WHEN** a project lacks reliable internal detail content or an external destination
 - **THEN** the site preserves the card as evidence without creating a fake route, placeholder link, or misleading click-through affordance
 
+#### Scenario: Current card destination is evaluated
+- **WHEN** a current Design or Development card other than Portfolio Website lacks enough real detail content
+- **THEN** it remains non-clickable with "Details Coming Soon" rather than linking to a thin placeholder page
+
 ### Requirement: Detail route approach is evaluated before implementation
-Future implementation SHALL evaluate dedicated routes such as `/design/[slug]` and `/development/[slug]` against a reusable detail view pattern before building project detail content.
+This implementation SHALL use dedicated route-based detail pages at `/design/[slug]` and `/development/[slug]` because recruiters benefit from shareable project URLs and because Design and Development context should remain distinct.
 
 #### Scenario: Detail implementation is proposed
-- **WHEN** a future change proposes card click-through behaviour
-- **THEN** it documents why dedicated routes or a reusable detail view pattern is the better fit for the available content depth
+- **WHEN** this change proposes card click-through behaviour
+- **THEN** it documents why dedicated routes are the better fit for available and future detail content
 
 ### Requirement: Repositioning and polish preserves the route set
 The portfolio repositioning and polish pass SHALL preserve the existing route set and navigation model: `/`, `/about`, `/design`, `/development`, and `/contact`.
@@ -142,27 +146,27 @@ The custom not-found experience SHALL provide a Return home action without addin
 - **THEN** it uses the existing visual system and provides a link back to `/`
 
 ### Requirement: Main routes expose page-specific metadata
-Each main route SHALL expose page-specific title and description metadata that matches the route's responsibility and current portfolio positioning. OpenGraph and Twitter metadata SHALL be provided or inherited where appropriate.
+Each main route SHALL expose page-specific title and description metadata that matches the route's responsibility and current portfolio positioning. Browser tab titles SHALL follow the approved title pattern. OpenGraph and Twitter metadata SHALL be provided or inherited where appropriate.
 
 #### Scenario: Home metadata renders
 - **WHEN** `/` metadata is evaluated
-- **THEN** it presents Gus's developer-turned-designer positioning and current UX engineering/product design direction
+- **THEN** the browser tab title is "Gus' Portfolio" and metadata still presents Gus's developer-turned-designer positioning and current UX engineering/product design direction through descriptions or social metadata
 
 #### Scenario: About metadata renders
 - **WHEN** `/about` metadata is evaluated
-- **THEN** it describes Gus's personal path from software engineering into UX engineering and product design
+- **THEN** the browser tab title is "About | Gustavo Antonelli" and the description explains Gus's personal path from software engineering into UX engineering and product design
 
 #### Scenario: Design metadata renders
 - **WHEN** `/design` metadata is evaluated
-- **THEN** it describes UX/product design work around clarity, empathy, interface decisions, and user experience
+- **THEN** the browser tab title is "Design | Gustavo Antonelli" and the description explains UX/product design work around clarity, empathy, interface decisions, and user experience
 
 #### Scenario: Development metadata renders
 - **WHEN** `/development` metadata is evaluated
-- **THEN** it describes implementation depth, frontend systems, and making design usable in real product conditions
+- **THEN** the browser tab title is "Development | Gustavo Antonelli" and the description explains implementation depth, frontend systems, and making design usable in real product conditions
 
 #### Scenario: Contact metadata renders
 - **WHEN** `/contact` metadata is evaluated
-- **THEN** it supports contacting Gus, viewing the CV, and reviewing relevant professional links without unsupported claims
+- **THEN** the browser tab title is "Contact | Gustavo Antonelli" and the description supports contacting Gus, viewing the CV, and reviewing relevant professional links without unsupported claims
 
 ### Requirement: Application readiness preserves existing routes
 Application-readiness polish SHALL preserve `/`, `/about`, `/design`, `/development`, and `/contact` without adding project detail pages or renaming current routes.
@@ -177,4 +181,19 @@ Default scaffold assets SHALL be removed only after code inspection confirms the
 #### Scenario: Default asset cleanup is considered
 - **WHEN** a default scaffold asset is found in `public/`
 - **THEN** it is deleted only if no application code, metadata, or public link references it
+
+### Requirement: Detail pages preserve route context and return paths
+Project detail pages SHALL preserve whether the visitor is viewing Design or Development evidence and SHALL provide a clear return path to the relevant overview page. Detail pages SHALL expose sensible route metadata based on the project title and section, preserve the shared site header and visual identity, and use clear not-found behavior for invalid or unavailable slugs.
+
+#### Scenario: Design detail page renders
+- **WHEN** a visitor opens `/design/[slug]` for an available Design case study
+- **THEN** the page renders with the shared header, Design-oriented detail content, and a return link to `/design`
+
+#### Scenario: Development detail page renders
+- **WHEN** a visitor opens `/development/[slug]` for an available Development project
+- **THEN** the page renders with the shared header, Development-oriented detail content, and a return link to `/development`
+
+#### Scenario: Unavailable detail slug is opened
+- **WHEN** a visitor opens a missing slug or a slug whose detail route is not available
+- **THEN** the site does not render fake content and instead uses the not-found recovery behavior
 
