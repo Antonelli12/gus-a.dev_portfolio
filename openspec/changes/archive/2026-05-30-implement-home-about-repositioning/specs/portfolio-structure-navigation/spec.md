@@ -1,3 +1,12 @@
+## MODIFIED Requirements
+
+### Requirement: Implementation stack remains stable
+Future implementation SHALL preserve the current Next.js, React, TypeScript, and Tailwind CSS stack unless a separate approved OpenSpec change proposes and accepts a stack change.
+
+#### Scenario: Existing page components or content modules are changed
+- **WHEN** Home, About, Design, Development, Contact, shared header, shared tool icons, or not-found UI are updated
+- **THEN** they continue to use the current Next.js, React, TypeScript, and Tailwind CSS stack
+
 ## ADDED Requirements
 
 ### Requirement: Repositioning and polish preserves the route set
@@ -24,13 +33,6 @@ The shared header SHALL keep normal single-row navigation on desktop and reasona
 #### Scenario: Visitor uses phone navigation
 - **WHEN** the screen is phone-sized
 - **THEN** the header wraps into the documented compact two-row layout without changing route destinations
-
-### Requirement: Implementation stack remains stable
-Implementation SHALL preserve the current Next.js, React, TypeScript, and Tailwind CSS stack unless a separate approved OpenSpec change proposes and accepts a stack change.
-
-#### Scenario: Existing page components or content modules are changed
-- **WHEN** Home, About, Design, Development, Contact, shared header, shared tool icons, or not-found UI are updated
-- **THEN** they continue to use the current Next.js, React, TypeScript, and Tailwind CSS stack
 
 ### Requirement: Custom not-found preserves recovery without changing route model
 The custom not-found experience SHALL provide a Return home action without adding a new top-level navigation destination.

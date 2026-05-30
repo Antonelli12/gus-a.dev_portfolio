@@ -4,66 +4,90 @@
 TBD - created by archiving change document-portfolio-baseline. Update Purpose after archive.
 ## Requirements
 ### Requirement: Portfolio copy is primarily data-driven
-The portfolio SHALL keep most page copy, repeated list data, case study data, project data, project card fields, project detail content, social links, CV URL, and contact form configuration in `data/*.ts` modules or an equivalent typed data layer.
+The portfolio SHALL keep most page copy, repeated list data, case study data, project data, social links, CV URL, contact form configuration, typed hero phrases, tool/method data, and repositioning/polish copy in `data/*.ts` modules or equivalent typed content structures.
 
 #### Scenario: Design case studies render
 - **WHEN** `DesignSection` renders featured case studies
-- **THEN** case study cards are generated from `featuredCaseStudies.items` or its successor data model rather than being independently hard-coded per card
+- **THEN** case study cards are generated from `featuredCaseStudies.items` rather than being independently hard-coded per card
 
-#### Scenario: Future project detail content renders
-- **WHEN** a project detail page or detail view renders
-- **THEN** overview, context, problem, goals, process, decisions, constraints, tools/platforms or tech stack, outcomes or learnings, and available links are sourced from typed project data
+#### Scenario: Tool and stack sections render
+- **WHEN** Design or Development renders tools, methods, stack, or workflow lists
+- **THEN** the visible items are generated from maintainable data or structured content and can include icon metadata where useful
+
+#### Scenario: Home, About, and Contact repositioning copy renders
+- **WHEN** Home, About, or Contact renders repositioned copy
+- **THEN** the copy is sourced from maintainable typed data or clearly structured content constants rather than scattered through unrelated layout logic
 
 ### Requirement: Home page introduces Gus and primary work paths
-The home page SHALL introduce Gus through the developer-turned-designer direction, explain what he is moving toward, explain why technical background strengthens his design work, and guide visitors toward Design work and Development work.
+The Home page SHALL introduce Gus as a developer turned designer with product thinking, technical depth, frontend implementation ability, and lightly signalled AI-aware workflow habits. It SHALL explain who Gus is, what he is moving toward, why his technical background strengthens his design work, and where visitors should go next.
 
 #### Scenario: Visitor lands on home
 - **WHEN** a visitor opens `/`
 - **THEN** the page presents developer-turned-designer positioning and links to `/design` and `/development`
 
-#### Scenario: Visitor scans the first viewport
-- **WHEN** a visitor scans the Home hero
+#### Scenario: Visitor scans Home positioning
+- **WHEN** a visitor scans the Home hero and supporting copy
 - **THEN** the primary identity is not generic Frontend Engineer or generic Software Engineer
 
+#### Scenario: Visitor chooses next path
+- **WHEN** a visitor wants to inspect evidence after reading Home
+- **THEN** the page provides clear calls to view Design work and Development work
+
 ### Requirement: About page describes Gus's professional transition
-The About page SHALL explain Gus's transition from software engineering into UX/product design, including values, working style, technical background, product thinking, AI-compatible workflow habits, and continued interest in implementation-aware design.
+The About page SHALL explain Gus's transition from software engineering into UX/product design and SHALL preserve technical depth, education, working style, and disciplined AI-compatible workflow habits.
 
 #### Scenario: Visitor opens About
 - **WHEN** a visitor opens `/about`
-- **THEN** the page renders the About intro and transition-focused content blocks from the About data model
+- **THEN** the page renders transition-focused About content from the About data model
 
 #### Scenario: Visitor evaluates credibility
 - **WHEN** a visitor reads About content
 - **THEN** the page makes clear that Gus has not abandoned engineering and uses technical credibility to strengthen design work
 
+#### Scenario: Visitor scans working style
+- **WHEN** a visitor scans About for how Gus works
+- **THEN** the page communicates problem-first thinking, clarity, implementation awareness, human review, and edge-case thinking without sounding like a generic process checklist
+
 ### Requirement: Design page describes design direction and case studies
-The Design page SHALL be the main UX/product evidence page, focused on case studies, user flows, wireframes, product decisions, AI-enabled workflows, interaction design, research, usability, information architecture, workflow design, and product reasoning.
+The Design page SHALL remain the main UX/product evidence page and SHALL support the repositioning through clearer UX/product framing, principle-led hero support, grounded case-study wording, design methods, tools, and product reasoning.
 
 #### Scenario: Visitor opens Design
 - **WHEN** a visitor opens `/design`
 - **THEN** the page renders the Design intro and current or successor design content sections from the Design data model
+
+#### Scenario: Visitor reads Design page
+- **WHEN** a visitor opens `/design`
+- **THEN** the page emphasises clarity, empathy, reduced confusion, user goals, methods, tools, and design/product case-study framing
 
 #### Scenario: Visitor scans Design evidence
 - **WHEN** a visitor scans Design project cards
 - **THEN** the cards prioritise design/product evidence over technology stack details
 
 ### Requirement: Development page describes frontend and technical work
-The Development page SHALL preserve technical credibility through frontend implementation, API-aware interfaces, backend/software engineering foundations, testing, maintainability, architecture, integration, technical trade-offs, and AI-assisted development workflow.
+The Development page SHALL preserve technical credibility and SHALL support the repositioning through practical implementation framing, frontend evidence, API-aware interfaces, reusable patterns, testing, maintainability, architecture, integration, technical trade-offs, and AI-assisted development workflow.
 
 #### Scenario: Visitor opens Development
 - **WHEN** a visitor opens `/development`
 - **THEN** the page renders the Development intro and current or successor development content sections from the Development data model
+
+#### Scenario: Visitor reads Development page
+- **WHEN** a visitor opens `/development`
+- **THEN** the page emphasises making design work in real conditions, including forms, state, data, validation, responsiveness, edge cases, reusable patterns, APIs, and maintainability
 
 #### Scenario: Visitor scans Development evidence
 - **WHEN** a visitor scans Development project cards
 - **THEN** the cards prioritise implementation evidence, architecture, integration, testing, maintainability, and technical trade-offs
 
 ### Requirement: Contact page uses contact configuration data
-The Contact page SHALL use contact data for intro copy, CV href, social links, Formspree endpoint configuration, and a short positioning statement that Gus is open to UX Engineer, Technical Product Designer, Product-minded Frontend Developer, and AI/Product workflow roles.
+The Contact page SHALL use contact data for intro copy, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed with the form actions.
 
 #### Scenario: Visitor opens Contact
 - **WHEN** a visitor opens `/contact`
 - **THEN** the page renders contact intro copy, Download CV, GitHub, LinkedIn, the contact form, and role-direction messaging using configured contact data
+
+#### Scenario: Visitor scans Contact actions
+- **WHEN** a visitor scans Contact actions
+- **THEN** social destinations are available as accessible icon links and Download CV appears as a stronger CTA inside the contact form/card area
 
 ### Requirement: Repeated content renders from arrays
 Repeated portfolio content SHALL render from arrays where modeled, including process steps, focus pills, project cards, case study cards, tool groups, credential items, social links, implementation areas, skill clusters, design methods, platform/context tags, tech stack tags, tooling tags, and project detail sections.
@@ -144,4 +168,29 @@ Portfolio content MUST NOT invent metrics, employers, seniority, case studies, a
 #### Scenario: Project copy is drafted
 - **WHEN** project copy, card descriptions, or detail content are drafted from CV-derived evidence
 - **THEN** they remain concise, public, credible, and evidence-backed without directly pasting CV bullet points
+
+### Requirement: Repositioning and polish scope excludes deeper project architecture
+The portfolio repositioning and polish pass SHALL NOT add project detail pages/views, rename routes, add top-level navigation destinations, change package dependencies, change runtime configuration, or invent unsupported claims.
+
+#### Scenario: Completed implementation is reviewed
+- **WHEN** the implementation is reviewed
+- **THEN** broader polish across existing pages is allowed, but deeper project-detail architecture and route model changes remain out of scope
+
+### Requirement: Home summary supports the hero
+The Home page SHALL include concise supporting copy inside or immediately below the hero area that explains the developer-turned-designer direction without overwhelming the first viewport.
+
+#### Scenario: Visitor reads Home summary
+- **WHEN** a visitor reads the Home page supporting copy
+- **THEN** they understand that Gus is moving toward UX/product design and uses technical depth to make design work more practical and buildable
+
+#### Scenario: Visitor reads AI-aware Home summary
+- **WHEN** AI-compatible workflow is mentioned in the Home summary
+- **THEN** it is presented lightly as part of Gus's product/design/development workflow rather than as the main hero claim
+
+### Requirement: AI-compatible workflow remains disciplined and credible
+Where AI-compatible workflow is mentioned, the portfolio SHALL frame it through structured delivery, prompt iteration, AI-assisted debugging, edge-case exploration, Spec Driven Development, and human ownership of final decisions.
+
+#### Scenario: Visitor reads AI workflow content
+- **WHEN** AI-compatible workflow habits are mentioned
+- **THEN** they are framed as disciplined product/development workflow rather than as a replacement for judgement
 

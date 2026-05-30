@@ -45,27 +45,42 @@ The About page SHALL explain Gus's transition from software engineering into UX/
 - **WHEN** a visitor scans About for how Gus works
 - **THEN** the page communicates problem-first thinking, clarity, implementation awareness, human review, and edge-case thinking without sounding like a generic process checklist
 
-### Requirement: Design and Development pages act as complementary evidence pages
-The Design and Development pages SHALL support the repositioning by presenting complementary evidence: Design foregrounds UX/product thinking and Development foregrounds implementation, architecture, integration, testing, maintainability, and practical constraints.
+### Requirement: Design page describes design direction and case studies
+The Design page SHALL remain the main UX/product evidence page and SHALL support the repositioning through clearer UX/product framing, principle-led hero support, grounded case-study wording, design methods, tools, and product reasoning.
 
-#### Scenario: Visitor compares evidence pages
-- **WHEN** a visitor moves between `/design` and `/development`
-- **THEN** the pages feel related in structure and visual rhythm while keeping distinct Design and Development responsibilities
+#### Scenario: Visitor opens Design
+- **WHEN** a visitor opens `/design`
+- **THEN** the page renders the Design intro and current or successor design content sections from the Design data model
 
 #### Scenario: Visitor reads Design page
 - **WHEN** a visitor opens `/design`
 - **THEN** the page emphasises clarity, empathy, reduced confusion, user goals, methods, tools, and design/product case-study framing
 
+#### Scenario: Visitor scans Design evidence
+- **WHEN** a visitor scans Design project cards
+- **THEN** the cards prioritise design/product evidence over technology stack details
+
+### Requirement: Development page describes frontend and technical work
+The Development page SHALL preserve technical credibility and SHALL support the repositioning through practical implementation framing, frontend evidence, API-aware interfaces, reusable patterns, testing, maintainability, architecture, integration, technical trade-offs, and AI-assisted development workflow.
+
+#### Scenario: Visitor opens Development
+- **WHEN** a visitor opens `/development`
+- **THEN** the page renders the Development intro and current or successor development content sections from the Development data model
+
 #### Scenario: Visitor reads Development page
 - **WHEN** a visitor opens `/development`
 - **THEN** the page emphasises making design work in real conditions, including forms, state, data, validation, responsiveness, edge cases, reusable patterns, APIs, and maintainability
 
-### Requirement: Contact page supports conversion without generic link pills
-The Contact page SHALL keep direct contact copy, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed with the form actions.
+#### Scenario: Visitor scans Development evidence
+- **WHEN** a visitor scans Development project cards
+- **THEN** the cards prioritise implementation evidence, architecture, integration, testing, maintainability, and technical trade-offs
+
+### Requirement: Contact page uses contact configuration data
+The Contact page SHALL use contact data for intro copy, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed with the form actions.
 
 #### Scenario: Visitor opens Contact
 - **WHEN** a visitor opens `/contact`
-- **THEN** the intro invites collaboration or connection in direct human language
+- **THEN** the page renders contact intro copy, Download CV, GitHub, LinkedIn, the contact form, and role-direction messaging using configured contact data
 
 #### Scenario: Visitor scans Contact actions
 - **WHEN** a visitor scans Contact actions
