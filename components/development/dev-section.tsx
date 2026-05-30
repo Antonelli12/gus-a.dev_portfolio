@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { headingFont, highlightFont } from "@/app/fonts";
+import { ExpandableProjectList } from "@/components/shared/expandable-project-list";
 import { HeroQuote } from "@/components/shared/hero-quote";
 import { ProjectCardDestination } from "@/components/shared/project-card-destination";
 import { ToolIconList } from "@/components/shared/tool-icon-list";
@@ -9,9 +10,11 @@ import {
   developmentIntro,
   devSection,
   frontendImplementation,
+  technicalProjectItems,
   technicalProjects,
   toolsStack,
 } from "@/data/development";
+import { resolveProjectDestination } from "@/data/project-types";
 import {
   sectionEyebrowClassName,
   sectionTitleClassName,
@@ -101,10 +104,16 @@ function ApiIntegrationContent() {
 
 function ProjectGrid() {
   return (
-    <div className="grid gap-4 lg:grid-cols-3">
-      {technicalProjects.items.map((project) => (
+    <ExpandableProjectList
+      className="grid gap-4 lg:grid-cols-3"
+      labels={{
+        expand: "See more projects",
+        collapse: "Collapse projects",
+      }}
+    >
+      {technicalProjectItems.map((project) => (
         <article
-          key={project.title}
+          key={project.slug}
           className="ui-pill flex h-full flex-col rounded-2xl p-5"
         >
           <div className="flex flex-wrap content-start gap-2 lg:min-h-[4.25rem]">
@@ -131,11 +140,13 @@ function ProjectGrid() {
           </div>
 
           <div className="mt-5">
-            <ProjectCardDestination destination={project.destination} />
+            <ProjectCardDestination
+              destination={resolveProjectDestination(project, "View project")}
+            />
           </div>
         </article>
       ))}
-    </div>
+    </ExpandableProjectList>
   );
 }
 

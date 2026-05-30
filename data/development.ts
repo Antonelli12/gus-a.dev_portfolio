@@ -1,7 +1,13 @@
 import {
   currentPortfolioRepository,
-  developmentDetailsComingSoon,
+  detailsComingSoon,
 } from "@/data/project-destinations";
+import {
+  findAvailableDetailRecord,
+  getAvailableDetailRecords,
+  sortByFeaturedOrder,
+  type ProjectCollection,
+} from "@/data/project-types";
 
 export const devSection = {
   eyebrow: "Development",
@@ -72,10 +78,12 @@ export const designSystemsComponents = {
   ],
 };
 
-export const technicalProjects = {
+export const technicalProjects: ProjectCollection = {
   title: "Technical Projects",
   items: [
     {
+      slug: "portfolio-rebuild",
+      featuredOrder: 1,
       title: "Portfolio Rebuild",
       type: "Next.js / React / TypeScript / Tailwind",
       status: "In progress",
@@ -88,8 +96,13 @@ export const technicalProjects = {
         "Responsive layout",
       ],
       destination: currentPortfolioRepository,
+      detail: {
+        available: false,
+      },
     },
     {
+      slug: "customer-account-management-interface",
+      featuredOrder: 2,
       title: "Customer & Account Management Interface",
       type: "React / REST APIs / Java Spring backend",
       status: "Project work",
@@ -101,9 +114,14 @@ export const technicalProjects = {
         "Form handling",
         "Data presentation",
       ],
-      destination: developmentDetailsComingSoon,
+      destination: detailsComingSoon("Customer & Account Management Interface"),
+      detail: {
+        available: false,
+      },
     },
     {
+      slug: "job-application-tracker",
+      featuredOrder: 3,
       title: "Job Application Tracker",
       type: "Product concept / Frontend project",
       status: "Upcoming",
@@ -115,10 +133,25 @@ export const technicalProjects = {
         "Status tracking",
         "Form UX",
       ],
-      destination: developmentDetailsComingSoon,
+      destination: detailsComingSoon("Job Application Tracker"),
+      detail: {
+        available: false,
+      },
     },
   ],
-} as const;
+};
+
+export const technicalProjectItems = sortByFeaturedOrder(
+  technicalProjects.items,
+);
+
+export const availableDevelopmentProjects = getAvailableDetailRecords(
+  technicalProjects.items,
+);
+
+export function getAvailableDevelopmentProject(slug: string) {
+  return findAvailableDetailRecord(technicalProjects.items, slug);
+}
 
 export const toolsStack = {
   title: "Tools & Stack",

@@ -1,4 +1,10 @@
-import { designCaseStudyComingLater } from "@/data/project-destinations";
+import { detailsComingSoon } from "@/data/project-destinations";
+import {
+  findAvailableDetailRecord,
+  getAvailableDetailRecords,
+  sortByFeaturedOrder,
+  type ProjectCollection,
+} from "@/data/project-types";
 
 export const designSection = {
   eyebrow: "Design",
@@ -18,10 +24,12 @@ export const designIntro = {
   ],
 };
 
-export const featuredCaseStudies = {
+export const featuredCaseStudies: ProjectCollection = {
   title: "Featured Case Studies",
   items: [
     {
+      slug: "portfolio-rebuild",
+      featuredOrder: 1,
       title: "Portfolio Rebuild",
       type: "UX / Visual Identity / Frontend",
       status: "In progress",
@@ -33,9 +41,14 @@ export const featuredCaseStudies = {
         "Content hierarchy",
         "Design system thinking",
       ],
-      destination: designCaseStudyComingLater,
+      destination: detailsComingSoon("Portfolio Rebuild"),
+      detail: {
+        available: false,
+      },
     },
     {
+      slug: "job-application-tracker",
+      featuredOrder: 2,
       title: "Job Application Tracker",
       type: "Product Design / Interface Design",
       status: "Upcoming case study",
@@ -47,9 +60,14 @@ export const featuredCaseStudies = {
         "Status visibility",
         "Form usability",
       ],
-      destination: designCaseStudyComingLater,
+      destination: detailsComingSoon("Job Application Tracker"),
+      detail: {
+        available: false,
+      },
     },
     {
+      slug: "customer-management-interface",
+      featuredOrder: 3,
       title: "Customer Management Interface",
       type: "Interface Review / Product Thinking",
       status: "Project work",
@@ -61,10 +79,25 @@ export const featuredCaseStudies = {
         "Error states",
         "Implementation constraints",
       ],
-      destination: designCaseStudyComingLater,
+      destination: detailsComingSoon("Customer Management Interface"),
+      detail: {
+        available: false,
+      },
     },
   ],
-} as const;
+};
+
+export const featuredCaseStudyItems = sortByFeaturedOrder(
+  featuredCaseStudies.items,
+);
+
+export const availableDesignCaseStudies = getAvailableDetailRecords(
+  featuredCaseStudies.items,
+);
+
+export function getAvailableDesignCaseStudy(slug: string) {
+  return findAvailableDetailRecord(featuredCaseStudies.items, slug);
+}
 
 export const designProcess = {
   title: "Design Process",

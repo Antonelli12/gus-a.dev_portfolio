@@ -1,18 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type Theme = "dark" | "light";
+import {
+  applyTheme,
+  getInitialTheme,
+  type Theme,
+} from "@/components/layout/theme-utils";
 
 export function ThemeToggle({ compact = false }: { compact?: boolean }) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
-    const currentTheme =
-      document.documentElement.dataset.theme === "light" ? "light" : "dark";
+    const initialTheme = getInitialTheme();
+
+    applyTheme(initialTheme);
     const timeoutId = window.setTimeout(() => {
-      setTheme(currentTheme);
+      setTheme(initialTheme);
       setHasMounted(true);
     }, 0);
 
@@ -23,7 +27,7 @@ export function ThemeToggle({ compact = false }: { compact?: boolean }) {
     const nextTheme = theme === "dark" ? "light" : "dark";
 
     setTheme(nextTheme);
-    document.documentElement.dataset.theme = nextTheme;
+    applyTheme(nextTheme);
     window.localStorage.setItem("theme", nextTheme);
   }
 

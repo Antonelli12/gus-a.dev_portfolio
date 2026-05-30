@@ -6,19 +6,25 @@ function pageMetadata({
   title,
   description,
   path,
+  absoluteTitle = false,
+  socialTitle,
 }: {
   title: string;
   description: string;
   path: string;
+  absoluteTitle?: boolean;
+  socialTitle?: string;
 }): Metadata {
+  const metadataTitle = socialTitle ?? `${title} | Gustavo Antonelli`;
+
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: {
       canonical: path,
     },
     openGraph: {
-      title: `${title} | Gustavo Antonelli`,
+      title: metadataTitle,
       description,
       url: path,
       siteName,
@@ -27,7 +33,7 @@ function pageMetadata({
     },
     twitter: {
       card: "summary",
-      title: `${title} | Gustavo Antonelli`,
+      title: metadataTitle,
       description,
     },
   };
@@ -35,10 +41,12 @@ function pageMetadata({
 
 export const routeMetadata = {
   home: pageMetadata({
-    title: "Developer Turned Designer",
+    title: "Gus' Portfolio",
     description:
       "Gus is a developer turned designer focused on UX engineering, technical product design, and product-minded frontend work.",
     path: "/",
+    absoluteTitle: true,
+    socialTitle: "Gus' Portfolio",
   }),
   about: pageMetadata({
     title: "About",
@@ -47,13 +55,13 @@ export const routeMetadata = {
     path: "/about",
   }),
   design: pageMetadata({
-    title: "UX Design for Better Digital Experiences",
+    title: "Design",
     description:
       "UX and product design work focused on clarity, empathy, interface decisions, and reducing friction in digital experiences.",
     path: "/design",
   }),
   development: pageMetadata({
-    title: "Where Design Becomes Real",
+    title: "Development",
     description:
       "Frontend and technical work that connects design intent to usable interfaces, data, validation, and real product constraints.",
     path: "/development",
@@ -65,3 +73,21 @@ export const routeMetadata = {
     path: "/contact",
   }),
 } as const;
+
+export function projectDetailMetadata({
+  title,
+  section,
+  description,
+  path,
+}: {
+  title: string;
+  section: "Design" | "Development";
+  description: string;
+  path: string;
+}) {
+  return pageMetadata({
+    title: `${title} | ${section}`,
+    description,
+    path,
+  });
+}
