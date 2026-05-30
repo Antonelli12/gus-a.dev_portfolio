@@ -51,11 +51,15 @@ The site SHALL use reusable CSS utility classes for core themed elements includi
 - **THEN** they use the existing theme-aware visual language for surfaces, tags, links, and hover/focus states
 
 ### Requirement: Section typography helpers provide consistent page introductions
-The site SHALL use shared typography helper values for section eyebrows, large section titles, highlighted title words, and section summaries.
+The site SHALL use shared typography helper values for section eyebrows, large section titles, highlighted title words, and section summaries. Main hero/page titles SHALL use consistent title capitalisation while preserving current highlight typography and responsive scale.
 
 #### Scenario: A content page intro renders
 - **WHEN** About, Design, Development, or Contact renders its page introduction
 - **THEN** eyebrow, title, highlighted title text, and summary styling remain consistent with the shared typography helpers
+
+#### Scenario: Main title copy renders
+- **WHEN** main hero/page titles render
+- **THEN** titles use consistent capitalisation such as "UX Design for Better Digital Experiences.", "Where Design Becomes Real.", "Developer Turned Designer.", and "Let's Connect."
 
 ### Requirement: Background animation respects reduced motion
 The breathing glow animation SHALL stop when the visitor has requested reduced motion.
@@ -100,7 +104,7 @@ Updated pages and shared components SHALL use existing theme-aware CSS variables
 - **THEN** revised content remains readable and visually consistent with the rest of the site
 
 ### Requirement: Hero typography remains expressive and responsive
-Large hero/page titles SHALL preserve expressive display typography while scaling appropriately on mobile and avoiding horizontal overflow.
+Large hero/page titles SHALL preserve expressive display typography while scaling appropriately on mobile, avoiding horizontal overflow, and keeping highlighted words visually consistent across pages.
 
 #### Scenario: Visitor scans updated hero titles
 - **WHEN** a visitor scans page headings and highlighted words
@@ -109,6 +113,10 @@ Large hero/page titles SHALL preserve expressive display typography while scalin
 #### Scenario: Visitor uses phone-sized screen
 - **WHEN** hero/page titles render on a phone-sized screen
 - **THEN** title text remains readable, balanced, and contained within the viewport
+
+#### Scenario: Title capitalisation is polished
+- **WHEN** title text is updated for consistency
+- **THEN** the change preserves the current layout rhythm, highlighted words, and CRT/pixel title treatment
 
 ### Requirement: Quotes use consistent principle-led hero support
 Design and Development hero support text SHALL use quote styling that matches the CRT/pixel visual direction and avoids generic explanatory paragraphs.
@@ -130,4 +138,15 @@ The Contact social icons and Download CV CTA SHALL preserve the existing button/
 #### Scenario: Visitor scans Contact actions
 - **WHEN** social links and the Download CV action render
 - **THEN** they remain theme-aware, accessible, and visually consistent with the portfolio style
+
+### Requirement: Accessibility polish preserves the CRT visual identity
+Accessibility, SEO, and responsive polish SHALL improve usability without replacing the dark/light theme system, CRT/pixel details, translucent surfaces, accent treatment, Devicon presentation, or expressive typography.
+
+#### Scenario: Accessibility fixes are applied
+- **WHEN** markup, labels, focus behavior, layout, or responsive sizing are adjusted
+- **THEN** the page remains recognisably part of the current CRT/pixel-inspired visual system
+
+#### Scenario: Responsive fixes are applied
+- **WHEN** mobile, tablet, desktop, or zoomed layouts are refined
+- **THEN** text, cards, navigation, and controls remain readable and usable without introducing a generic portfolio style
 

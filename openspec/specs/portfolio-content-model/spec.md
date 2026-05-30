@@ -4,7 +4,7 @@
 TBD - created by archiving change document-portfolio-baseline. Update Purpose after archive.
 ## Requirements
 ### Requirement: Portfolio copy is primarily data-driven
-The portfolio SHALL keep most page copy, repeated list data, case study data, project data, social links, CV URL, contact form configuration, typed hero phrases, tool/method data, and repositioning/polish copy in `data/*.ts` modules or equivalent typed content structures.
+The portfolio SHALL keep most page copy, repeated list data, case study data, project data, project destination metadata, social links, CV URL, contact form configuration, typed hero phrases, static hero fallback copy, page metadata copy, tool/method data, and repositioning/polish copy in `data/*.ts` modules or equivalent typed content structures.
 
 #### Scenario: Design case studies render
 - **WHEN** `DesignSection` renders featured case studies
@@ -17,6 +17,10 @@ The portfolio SHALL keep most page copy, repeated list data, case study data, pr
 #### Scenario: Home, About, and Contact repositioning copy renders
 - **WHEN** Home, About, or Contact renders repositioned copy
 - **THEN** the copy is sourced from maintainable typed data or clearly structured content constants rather than scattered through unrelated layout logic
+
+#### Scenario: Metadata and destination copy renders
+- **WHEN** route metadata, static hero fallback text, project-card destinations, or unavailable destination labels render
+- **THEN** the copy comes from maintainable typed data or clearly structured content constants
 
 ### Requirement: Home page introduces Gus and primary work paths
 The Home page SHALL introduce Gus as a developer turned designer with product thinking, technical depth, frontend implementation ability, and lightly signalled AI-aware workflow habits. It SHALL explain who Gus is, what he is moving toward, why his technical background strengthens his design work, and where visitors should go next.
@@ -34,7 +38,7 @@ The Home page SHALL introduce Gus as a developer turned designer with product th
 - **THEN** the page provides clear calls to view Design work and Development work
 
 ### Requirement: About page describes Gus's professional transition
-The About page SHALL explain Gus's transition from software engineering into UX/product design and SHALL preserve technical depth, education, working style, and disciplined AI-compatible workflow habits.
+The About page SHALL explain Gus's personal path from early curiosity about how technology works into programming, UX engineering, product design, and implementation-aware design. It SHALL preserve technical depth, education, working style, and disciplined AI-compatible workflow habits without repeatedly using "developer turned designer" inside body copy. The approved About story SHALL be used exactly as provided unless a tiny grammar, escaping, or JSX/string-formatting change is required.
 
 #### Scenario: Visitor opens About
 - **WHEN** a visitor opens `/about`
@@ -47,6 +51,10 @@ The About page SHALL explain Gus's transition from software engineering into UX/
 #### Scenario: Visitor scans working style
 - **WHEN** a visitor scans About for how Gus works
 - **THEN** the page communicates problem-first thinking, clarity, implementation awareness, human review, and edge-case thinking without sounding like a generic process checklist
+
+#### Scenario: Visitor reads the personal story
+- **WHEN** a visitor expands or reads the About story
+- **THEN** the story uses the approved personal narrative about curiosity, programming, user experience, product thinking, and engineering constraints rather than rewriting it into generic portfolio positioning copy
 
 ### Requirement: Design page describes design direction and case studies
 The Design page SHALL remain the main UX/product evidence page and SHALL support the repositioning through clearer UX/product framing, principle-led hero support, grounded case-study wording, design methods, tools, and product reasoning.
@@ -79,15 +87,19 @@ The Development page SHALL preserve technical credibility and SHALL support the 
 - **THEN** the cards prioritise implementation evidence, architecture, integration, testing, maintainability, and technical trade-offs
 
 ### Requirement: Contact page uses contact configuration data
-The Contact page SHALL use contact data for intro copy, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed with the form actions.
+The Contact page SHALL use contact data for intro copy, a subtle role-openness line, CV href, social links, Formspree endpoint configuration, accessible GitHub and LinkedIn icon links, the existing contact form flow, and a Download CV CTA placed near the social links as a separate recruiter-facing action that remains visually distinct from icon-only social buttons.
 
 #### Scenario: Visitor opens Contact
 - **WHEN** a visitor opens `/contact`
-- **THEN** the page renders contact intro copy, Download CV, GitHub, LinkedIn, the contact form, and role-direction messaging using configured contact data
+- **THEN** the page renders contact intro copy, a short role-openness statement, Download CV, GitHub, LinkedIn, and the contact form using configured contact data
 
 #### Scenario: Visitor scans Contact actions
 - **WHEN** a visitor scans Contact actions
-- **THEN** social destinations are available as accessible icon links and Download CV appears as a stronger CTA inside the contact form/card area
+- **THEN** social destinations and Download CV appear together as accessible actions outside the form button row, with Download CV presented as a distinct recruiter-facing CTA
+
+#### Scenario: Visitor reads role openness
+- **WHEN** a visitor reads the Contact intro area
+- **THEN** a separate short paragraph states that Gus is open to UX Engineer, Technical Product Designer, and product-focused frontend roles without making the page feel cluttered
 
 ### Requirement: Repeated content renders from arrays
 Repeated portfolio content SHALL render from arrays where modeled, including process steps, focus pills, project cards, case study cards, tool groups, credential items, social links, implementation areas, skill clusters, design methods, platform/context tags, tech stack tags, tooling tags, and project detail sections.
@@ -97,7 +109,7 @@ Repeated portfolio content SHALL render from arrays where modeled, including pro
 - **THEN** each visible item is produced from the corresponding data array
 
 ### Requirement: Design project cards use product evidence fields
-Design project cards SHALL support project title, short description, problem or context summary, platform/context tags, design methods used where relevant, optional tools, and click-through metadata for deeper case-study content.
+Design project cards SHALL support project title, short description, problem or context summary, platform/context tags, design methods used where relevant, optional tools, and data-driven destination metadata for existing deeper case-study content, verified GitHub repositories, verified external URLs, or an honest unavailable state.
 
 #### Scenario: Design card renders Customer and Account Management Platform
 - **WHEN** the Customer and Account Management Platform appears as a Design card
@@ -111,6 +123,10 @@ Design project cards SHALL support project title, short description, problem or 
 - **WHEN** the Portfolio Website appears as a Design card
 - **THEN** it is framed around information architecture, recruiter scanning behaviour, visual system, contact flow, dark/light theme, and AI-assisted iteration with human ownership
 
+#### Scenario: Design card destination is unavailable
+- **WHEN** a Design card has no reliable internal detail page or external destination
+- **THEN** the data model represents that honestly by keeping the card non-clickable or using a subtle state such as "Case study coming later" instead of inventing a repository, placeholder link, or unsupported internal route
+
 ### Requirement: Design card taxonomy supports context, methods, and tools
 Design project cards SHALL support platform/context tags such as Web, Mobile, Desktop, Responsive Web, Internal Tool, AI Workflow, Enterprise Workflow, Dashboard, Assistant, and Prototype; design method tags such as user flows, wireframes, prototyping, interaction design, journey mapping, information architecture, usability feedback, and workflow design; and optional tool tags such as Figma, Miro, Microsoft Copilot Studio, Azure AI Foundry, and Azure DevOps.
 
@@ -119,7 +135,7 @@ Design project cards SHALL support platform/context tags such as Web, Mobile, De
 - **THEN** the tags communicate design evidence and context before implementation stack
 
 ### Requirement: Development project cards use technical evidence fields
-Development project cards SHALL support project title, short description, technical problem or implementation summary, tech stack tags, tooling tags, and click-through metadata for deeper technical project content.
+Development project cards SHALL support project title, short description, technical problem or implementation summary, tech stack tags, tooling tags, and data-driven destination metadata for existing deeper technical project content, verified GitHub repositories, verified external URLs, or an honest unavailable state.
 
 #### Scenario: Development card renders Portfolio Website
 - **WHEN** the Portfolio Website appears as a Development card
@@ -136,6 +152,10 @@ Development project cards SHALL support project title, short description, techni
 #### Scenario: Development card renders PSO Movie Recommendation System
 - **WHEN** the PSO Movie Recommendation System appears as a Development card
 - **THEN** it is framed around Python, Particle Swarm Optimisation, the MovieLens 100k dataset, recommendation accuracy and serendipity, and computational trade-offs
+
+#### Scenario: Development card destination is unavailable
+- **WHEN** a Development card has no reliable internal detail page, GitHub repository, or relevant external destination
+- **THEN** the data model represents that honestly by keeping the card non-clickable or using a subtle state such as "Details coming soon" instead of inventing a repository, placeholder link, or unsupported internal route
 
 ### Requirement: Development card taxonomy supports stack and tooling
 Development project cards SHALL support tech stack tags such as React, Next.js, TypeScript, Tailwind, JavaScript, Java, Spring Boot, Python, SQL, REST, GraphQL, PostgreSQL, Docker, Formspree, Vercel, and Azure; and tooling tags such as Git, GitHub, Postman, Azure DevOps, JUnit, Mockito, Jest, Playwright, Codex, and Copilot.
@@ -193,4 +213,26 @@ Where AI-compatible workflow is mentioned, the portfolio SHALL frame it through 
 #### Scenario: Visitor reads AI workflow content
 - **WHEN** AI-compatible workflow habits are mentioned
 - **THEN** they are framed as disciplined product/development workflow rather than as a replacement for judgement
+
+### Requirement: Project card destinations are data-driven and honest
+Project cards SHALL use structured destination metadata to distinguish existing internal detail access, verified external links, and unavailable destinations.
+
+#### Scenario: Project has an internal destination
+- **WHEN** a project card has reliable internal detail content
+- **THEN** its destination metadata identifies the internal href and accessible link label
+
+#### Scenario: Project has an external destination
+- **WHEN** a project card has a verified GitHub repository or relevant external URL
+- **THEN** its destination metadata identifies the external href, accessible link label, and safe new-tab behavior
+
+#### Scenario: Project has no destination
+- **WHEN** a project has no reliable destination yet
+- **THEN** the card remains non-clickable or shows a subtle page-appropriate state such as "Details coming soon" or "Case study coming later" without rendering a fake repository, placeholder link, or unsupported internal route
+
+### Requirement: Page metadata copy matches route responsibilities
+The portfolio SHALL provide concise metadata copy for Home, About, Design, Development, and Contact that matches each route's current responsibility and developer-turned-designer positioning.
+
+#### Scenario: Metadata is drafted
+- **WHEN** a route title, description, OpenGraph title, or social description is written
+- **THEN** it uses public, credible wording and avoids unsupported claims, invented outcomes, or inflated seniority
 
