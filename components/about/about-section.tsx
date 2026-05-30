@@ -131,7 +131,7 @@ export function AboutSection() {
               Developer
             </span>
             <br />
-            turned
+            Turned
             <br />
             <span
               className={highlightFont.className}

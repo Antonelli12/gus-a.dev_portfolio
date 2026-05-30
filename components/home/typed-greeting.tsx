@@ -184,7 +184,10 @@ export function TypedGreeting() {
   const renderedVisiblePhrase = reducedMotion ? PHRASES[0] : visiblePhrase;
 
   return (
-    <div className="flex flex-col items-center text-center text-theme">
+    <div
+      aria-hidden="true"
+      className="flex flex-col items-center text-center text-theme"
+    >
       <div className="w-[min(88vw,980px)] min-h-[1.3em]">
         <p className={headingFont.className} style={textStyle}>
           {renderedGreeting}
@@ -195,7 +198,7 @@ export function TypedGreeting() {
       </div>
 
       <div className="w-[min(88vw,980px)] min-h-[2.6em]">
-        <h1
+        <p
           className={headingFont.className}
           style={{ ...textStyle, whiteSpace: "normal", wordBreak: "normal" }}
         >
@@ -210,7 +213,7 @@ export function TypedGreeting() {
           {showCaret && phase !== "typingGreeting" && (
             <span className="ml-1 inline-block animate-pulse text-theme-muted">|</span>
           )}
-        </h1>
+        </p>
       </div>
     </div>
   );

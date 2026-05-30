@@ -38,7 +38,11 @@ function SubmissionMessage({
   const style = state === "success" ? "ui-status-success" : "ui-status-error";
 
   return (
-    <div className={`rounded-xl border px-4 py-3 text-sm ${style}`}>
+    <div
+      aria-live={state === "success" ? "polite" : "assertive"}
+      className={`rounded-xl border px-4 py-3 text-sm ${style}`}
+      role={state === "success" ? "status" : "alert"}
+    >
       {message}
     </div>
   );
@@ -98,17 +102,20 @@ export function ContactSection() {
           <p className={sectionEyebrowClassName}>{contactSection.eyebrow}</p>
 
           <h2 className={`${headingFont.className} ${sectionTitleClassName}`}>
-            Let&apos;s
+            {contactSection.titleStart}
             <br />
             <span
               className={highlightFont.className}
               style={sectionTitleHighlightStyle}
             >
-              Connect.
+              {contactSection.titleHighlight}
             </span>
           </h2>
 
           <p className={sectionSummaryClassName}>{contactSection.intro}</p>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-theme-faint sm:text-base">
+            {contactSection.roleIntro}
+          </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {socialLinks.map((link) => (
@@ -116,7 +123,7 @@ export function ContactSection() {
                 key={link.href}
                 href={link.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={link.label}
                 title={link.label}
                 className={iconLinkClassName}

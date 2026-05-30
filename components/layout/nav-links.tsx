@@ -26,9 +26,11 @@ const listClassName: Record<NavLinksVariant, string> = {
 export function NavLinks({
   items = mainNavigation,
   variant = "desktop",
+  ariaLabel = "Main navigation",
 }: {
   items?: readonly NavigationItem[];
   variant?: NavLinksVariant;
+  ariaLabel?: string;
 }) {
   const pathname = usePathname();
   const isDesktop = variant === "desktop";
@@ -37,7 +39,7 @@ export function NavLinks({
     : `${headingFont.className} block rounded px-1.5 py-1.5 text-center text-[0.82rem] leading-none transition duration-200 min-[430px]:text-sm`;
 
   return (
-    <nav aria-label="Main navigation" className={navClassName[variant]}>
+    <nav aria-label={ariaLabel} className={navClassName[variant]}>
       <ul className={listClassName[variant]}>
         {items.map((item) => {
           const isActive =

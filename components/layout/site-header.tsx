@@ -18,10 +18,18 @@ export function SiteHeader() {
             <ThemeToggle compact />
           </div>
 
-          <NavLinks items={mobileTopNavigation} variant="mobileTop" />
+          <NavLinks
+            ariaLabel="Primary navigation"
+            items={mobileTopNavigation}
+            variant="mobileTop"
+          />
         </div>
 
-        <NavLinks items={mobileBottomNavigation} variant="mobileBottom" />
+        <NavLinks
+          ariaLabel="Work navigation"
+          items={mobileBottomNavigation}
+          variant="mobileBottom"
+        />
       </div>
 
       <div className="mx-auto hidden min-h-16 w-full max-w-[80rem] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-5 px-6 sm:grid sm:px-10 lg:gap-6 lg:px-16">

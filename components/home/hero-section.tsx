@@ -6,8 +6,14 @@ export function HeroSection() {
   return (
     <section
       id="home"
+      aria-labelledby="home-title"
       className="flex min-h-screen flex-col items-center justify-center px-6 text-center"
     >
+      <h1 id="home-title" className="sr-only">
+        {homeHero.staticHeading}
+      </h1>
+      <p className="sr-only">{homeHero.staticSummary}</p>
+
       <TypedGreeting />
 
       <div className="mt-8 flex flex-wrap justify-center gap-2 sm:mt-10 sm:gap-3">

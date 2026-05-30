@@ -1,8 +1,13 @@
+import {
+  currentPortfolioRepository,
+  developmentDetailsComingSoon,
+} from "@/data/project-destinations";
+
 export const devSection = {
   eyebrow: "Development",
   titleStart: "Where Design",
   titleHighlight: "Becomes",
-  titleEnd: "Real",
+  titleEnd: "Real.",
   quote:
     "“Design is not just what it looks like and feels like. Design is how it works.”",
   quoteAttribution: "— Steve Jobs, Apple co-founder",
@@ -82,6 +87,7 @@ export const technicalProjects = {
         "Reusable UI classes",
         "Responsive layout",
       ],
+      destination: currentPortfolioRepository,
     },
     {
       title: "Customer & Account Management Interface",
@@ -95,6 +101,7 @@ export const technicalProjects = {
         "Form handling",
         "Data presentation",
       ],
+      destination: developmentDetailsComingSoon,
     },
     {
       title: "Job Application Tracker",
@@ -108,6 +115,7 @@ export const technicalProjects = {
         "Status tracking",
         "Form UX",
       ],
+      destination: developmentDetailsComingSoon,
     },
   ],
 } as const;

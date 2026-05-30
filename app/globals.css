@@ -293,6 +293,12 @@ html[data-theme="dark"] .bg-site-noise {
   color: var(--button-text-hover);
 }
 
+.ui-button:focus-visible,
+.ui-field:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
 .ui-field {
   border: 1px solid var(--field-border);
   background: var(--field-bg);
